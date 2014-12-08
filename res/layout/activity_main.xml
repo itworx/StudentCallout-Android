@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.itworx.tk.studentcallout.MainActivity" >
+
+
+    <GridView 
+    android:id="@+id/gridView"
+    android:numColumns="auto_fit"
+    android:gravity="center"
+    android:columnWidth="100dp"
+    android:stretchMode="columnWidth"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:horizontalSpacing="10dp"   
+     android:verticalSpacing="10dp">     
+    </GridView>
+    
+    <Button android:id="@+id/buttonNext"
+    android:layout_width="fill_parent"
+    android:gravity="bottom"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:text="@string/button_next" />
+
+</RelativeLayout>
