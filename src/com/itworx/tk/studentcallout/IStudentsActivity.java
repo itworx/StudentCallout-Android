@@ -6,5 +6,5 @@ import com.itworx.tk.studentcallout.Student;
 
 public interface IStudentsActivity {
 	void showStudents(ArrayList<Student> students);
-	void selectStudent(Student student);
+	void showStudent(Student student);
 }

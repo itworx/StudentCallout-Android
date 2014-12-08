@@ -2,14 +2,7 @@ package com.itworx.tk.studentcallout;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.ThreadPoolExecutor.DiscardOldestPolicy;
-
-
-import android.R.bool;
-import android.R.integer;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.AsyncTask;
 
 import com.itworx.tk.studentcallout.Student;
@@ -28,7 +21,7 @@ public class StudentsPresenter {
 		this.databaseHelper = new DataManager(context);
 		this.studentIndicesToPickFrom = new ArrayList<Integer>();
 		
-		//load from persistent settings
+		//TO DO: load from persistent settings
 		this.setAllowRepetition(false);
 	}
 	
@@ -37,7 +30,6 @@ public class StudentsPresenter {
 	  if(allow){
 		this.studentIndicesToPickFrom = new ArrayList<Integer>();  
 	  }
-	  // 
 	}
 	
 	
@@ -106,18 +98,18 @@ public class StudentsPresenter {
 		if(this.allowRepetition){			
 	      int index = randomGenerator.nextInt(this.students.size());
 	      Student selectedStudent = this.students.get(index);
-	      studentsActivity.selectStudent(selectedStudent);	      
+	      studentsActivity.showStudent(selectedStudent);	      
 		}
 		else {
 				if(this.studentIndicesToPickFrom.size() == 0){
-				  //Show MSG	s
+				  //Show MSG	
 					this.reset();
 				}
 				int index = randomGenerator.nextInt(this.studentIndicesToPickFrom.size());
 				int pickedIndex = this.studentIndicesToPickFrom.get(index);
 				this.studentIndicesToPickFrom.remove(index);
 				Student selectedStudent = this.students.get(pickedIndex);
-			    studentsActivity.selectStudent(selectedStudent);				
+			    studentsActivity.showStudent(selectedStudent);				
 		}
 	}
 	
