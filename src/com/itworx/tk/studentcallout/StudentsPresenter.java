@@ -115,7 +115,7 @@ public class StudentsPresenter {
 				}
 				int index = randomGenerator.nextInt(this.studentIndicesToPickFrom.size());
 				int pickedIndex = this.studentIndicesToPickFrom.get(index);
-				this.studentIndicesToPickFrom.remove(pickedIndex);
+				this.studentIndicesToPickFrom.remove(index);
 				Student selectedStudent = this.students.get(pickedIndex);
 			    studentsActivity.selectStudent(selectedStudent);				
 		}
