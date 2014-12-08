@@ -65,7 +65,7 @@ public class DataManager extends SQLiteOpenHelper{
 		SQLiteDatabase db  = getReadableDatabase();
 		Cursor cursor =db.query(TABLE_NAME, null, null, null, null, null, FIRST_NAME_KEY);
 		Student student ; 
-		ArrayList<Student> lstStudents = new ArrayList<Student>();
+		ArrayList<Student> lstStudents = new ArrayList<Student>(cursor.getCount());
 		while(cursor.moveToNext())
 		{
 			student = new Student();
