@@ -2,14 +2,11 @@ package com.itworx.tk.studentcallout;
 
 import java.util.ArrayList;
 
-import android.app.ActionBar.LayoutParams;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -74,7 +71,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	}
 
 	@Override
-	public void selectStudent(Student student) {
+	public void showStudent(Student student) {
 		// TODO Auto-generated method stub
 		if (studentCard != null) {
 			((ViewGroup)studentCard.getParent()).removeView(studentCard);

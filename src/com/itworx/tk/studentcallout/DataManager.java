@@ -6,7 +6,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -48,19 +47,14 @@ public class DataManager extends SQLiteOpenHelper{
 	}
 	
 	public void addStudent(Student student)
-	{
-		//open connection 
+	{ 
 	 	SQLiteDatabase db  = getWritableDatabase();
 	 	
-	 	
-	 	//step 2 passing values 
 	 	ContentValues values = new ContentValues();
 	 	values.put("firstName", student.firstname);
 	 	values.put("lastName", student.lastname);
 	 	values.put("imagePath", student.imagePath);	 	
 	 	
-	 	
-	 	//step3 
 	 	db.insert(TABLE_NAME,null, values);
 	 	
 	 	db.close();
@@ -68,11 +62,7 @@ public class DataManager extends SQLiteOpenHelper{
 
 	public ArrayList<Student> getAllStudents()
 	{
-		SQLiteDatabase db  = 	getReadableDatabase();
-		
-//		db.rawQuery("select * from student",null);
-		
-//		Cursor cursor = db.query(TABLE_NAME, new String[]{"name"}, "name=? and id=?", new String []{String.valueOf(5),"5"}, null, null, "");
+		SQLiteDatabase db  = getReadableDatabase();
 		Cursor cursor =db.query(TABLE_NAME, null, null, null, null, null, FIRST_NAME_KEY);
 		Student student ; 
 		ArrayList<Student> lstStudents = new ArrayList<Student>();
