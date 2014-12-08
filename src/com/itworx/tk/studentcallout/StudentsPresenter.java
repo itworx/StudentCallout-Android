@@ -3,26 +3,30 @@ package com.itworx.tk.studentcallout;
 import java.util.ArrayList;
 import java.util.Random;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import com.itworx.tk.studentcallout.Student;
 
+
 public class StudentsPresenter {
-	
+	public static final String ALLOW_KEY = "ALLOWREPTITION";	
 	IStudentsActivity studentsActivity;
 	Boolean allowRepetition; 
 	ArrayList<Student> students;
 	ArrayList<Integer> studentIndicesToPickFrom;
 	DataManager databaseHelper ;
-
+	Context activityContext;
+	SharedPreferences.Editor preferencesEditor;
 	
 	public StudentsPresenter(IStudentsActivity studentsActivity,Context context) {
 		this.studentsActivity = studentsActivity;
 		this.databaseHelper = new DataManager(context);
 		this.studentIndicesToPickFrom = new ArrayList<Integer>();
-		
+		SharedPreferences preferences = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+		this.preferencesEditor = preferences.edit();
 		//TO DO: load from persistent settings
-		this.setAllowRepetition(false);
+		this.allowRepetition = preferences.getBoolean(ALLOW_KEY, false);
 	}
 	
 	void setAllowRepetition (Boolean allow){
@@ -30,6 +34,9 @@ public class StudentsPresenter {
 	  if(allow){
 		this.studentIndicesToPickFrom = new ArrayList<Integer>();  
 	  }
+	  
+	  this.preferencesEditor.putBoolean(ALLOW_KEY, this.allowRepetition);
+	  this.preferencesEditor.commit();
 	}
 	
 	
