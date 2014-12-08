@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -27,7 +28,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		context = this  ; 
+		context = this; 
 		studentsPresenter = new StudentsPresenter(this,this);
 		studentsPresenter.getStudents();
 		
@@ -77,16 +78,9 @@ public class MainActivity extends Activity implements IStudentsActivity {
 			((ViewGroup)studentCard.getParent()).removeView(studentCard);
 		}
 		
-		LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		studentCard = vi.inflate(R.layout.studentcard, null);
-		studentCard.setBackgroundColor(Color.RED);
-		// fill in any details dynamically here
-		TextView textView = (TextView) studentCard.findViewById(R.id.textView1);
-		textView.setText(student.firstname + " " + student.lastname);
-
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-		params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
-		params.leftMargin = 107;
-		 addContentView(studentCard, params);
+		
+		Intent intent = new Intent(this,StudentActivity.class);
+		intent.putExtra("student", student);
+		startActivity(intent);
 	}
 }
