@@ -77,10 +77,11 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		if (studentCard != null) {
 			((ViewGroup)studentCard.getParent()).removeView(studentCard);
 		}
-		
+	
 		
 		Intent intent = new Intent(this,StudentActivity.class);
-		intent.putExtra("student", student);
+		intent.putExtra("studentModel", student);
+//		intent.putExtra("studentsPresenter", studentsPresenter);
 		startActivity(intent);
 	}
 }

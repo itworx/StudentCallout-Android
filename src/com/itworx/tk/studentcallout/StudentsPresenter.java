@@ -5,11 +5,13 @@ import java.util.Random;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.itworx.tk.studentcallout.Student;
 
 
-public class StudentsPresenter {
+public class StudentsPresenter implements Parcelable {
 	public static final String ALLOW_KEY = "ALLOWREPTITION";	
 	IStudentsActivity studentsActivity;
 	Boolean allowRepetition; 
@@ -155,4 +157,28 @@ public class StudentsPresenter {
 		}
 		
 	}
+
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+	}
+	
+	
+	public static final Parcelable.Creator<StudentsPresenter> CREATOR = new Parcelable.Creator<StudentsPresenter>() {
+        public StudentsPresenter createFromParcel(Parcel in) {
+            return new StudentsPresenter(null,null);
+        }
+
+		@Override
+		public StudentsPresenter[] newArray(int arg0) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+    };
 }
