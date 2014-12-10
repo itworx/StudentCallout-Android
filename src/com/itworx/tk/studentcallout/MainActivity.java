@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.ToggleButton;
 
 
 public class MainActivity extends Activity implements IStudentsActivity {
@@ -53,8 +58,45 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
+			
+			LinearLayout linearLayout = new LinearLayout(this);
+			linearLayout.setOrientation(LinearLayout.VERTICAL);
+			linearLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+		    
+		    ToggleButton allowRepetitionButton = new ToggleButton(this);
+		    allowRepetitionButton.setTextOff("Allow Repetition Off");
+		    allowRepetitionButton.setTextOn("Allow Repetition On");
+		    allowRepetitionButton.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+	        linearLayout.addView(allowRepetitionButton);
+
+	        final Button resetButton = new Button(this);
+	        resetButton.setText("Reset");
+	        resetButton.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+	        linearLayout.addView(resetButton);	        
+	        
+		    AlertDialog.Builder builder;
+		    AlertDialog alertDialog;
+		    builder = new AlertDialog.Builder(this);
+		    builder.setView(linearLayout);
+		    alertDialog = builder.create();
+		    alertDialog.setTitle("Settings");
+		    alertDialog.show();
+		    
+		    
+		    allowRepetitionButton.setChecked(studentsPresenter.allowRepetition);
+		    resetButton.setEnabled(!studentsPresenter.allowRepetition);
+		    
+		    allowRepetitionButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+		        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		        	studentsPresenter.setAllowRepetition(isChecked);
+		        	resetButton.setEnabled(!studentsPresenter.allowRepetition);
+		        }
+		    });
+			
 			return true;
 		}
+		
+    	   
 		return super.onOptionsItemSelected(item);
 	}
 
