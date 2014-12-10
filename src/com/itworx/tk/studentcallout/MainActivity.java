@@ -6,23 +6,18 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+
 
 public class MainActivity extends Activity implements IStudentsActivity {
 	StudentsPresenter studentsPresenter;
 	Context context;
-	View studentCard;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,14 +69,20 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	@Override
 	public void showStudent(Student student) {
 		// TODO Auto-generated method stub
-		if (studentCard != null) {
-			((ViewGroup)studentCard.getParent()).removeView(studentCard);
-		}
-	
 		
 		Intent intent = new Intent(this,StudentActivity.class);
 		intent.putExtra("studentModel", student);
-//		intent.putExtra("studentsPresenter", studentsPresenter);
-		startActivity(intent);
+		startActivityForResult(intent, 0);
+	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+	    if (requestCode == 0) {
+	        if (resultCode == 0) { // nothing
+	        }
+	        else if (resultCode == 1) { // pick next
+	        	studentsPresenter.selectNextStudent();
+	        }
+	    }
 	}
 }

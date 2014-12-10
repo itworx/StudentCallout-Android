@@ -13,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class StudentActivity extends Activity {
-
-	StudentsPresenter studentsPresenter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +28,6 @@ public class StudentActivity extends Activity {
 		
 		Intent intent = this.getIntent();
 		Student student = intent.getParcelableExtra("studentModel");
-//		studentsPresenter = intent.getParcelableExtra("studentsPresenter");
 		
 		ImageView imageView = (ImageView)this.findViewById(R.id.imageViewStudent);
 		TextView textView = (TextView)this.findViewById(R.id.textViewStudent);
@@ -42,7 +39,7 @@ public class StudentActivity extends Activity {
 		buttonNext.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				studentsPresenter.selectNextStudent();
+				setResult(1);
 				finish();
 			}
 		});		

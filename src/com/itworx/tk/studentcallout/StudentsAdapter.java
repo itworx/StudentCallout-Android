@@ -30,6 +30,7 @@ public class StudentsAdapter extends ArrayAdapter<Student> {
 					R.layout.student_cell, parent, false);
 			convertView=view;
 		}
+		//Map the photo
 //		TextView textView = (TextView) convertView.findViewById(R.id.textviewName);
 //		textView.setText(students.get(position).firstname);
 //		ImageView imageView = (ImageView) convertView.findViewById(R.id.imageviewPhoto);
