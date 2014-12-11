@@ -8,19 +8,19 @@ package com.mikhaellopez.circularimageview;
 
 public final class R {
 	public static final class attr {
-		public static final int border = 0x7f010000;
-		public static final int border_color = 0x7f010002;
-		public static final int border_width = 0x7f010001;
-		public static final int circularImageViewStyle = 0x7f010004;
-		public static final int shadow = 0x7f010003;
+		public static final int border = 0x7f01006a;
+		public static final int border_color = 0x7f01006c;
+		public static final int border_width = 0x7f01006b;
+		public static final int circularImageViewStyle = 0x7f01006e;
+		public static final int shadow = 0x7f01006d;
 	}
 	public static final class styleable {
-		public static final int[] CircularImageView = { 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003 };
+		public static final int[] CircularImageView = { 0x7f01006a, 0x7f01006b, 0x7f01006c, 0x7f01006d };
 		public static final int CircularImageView_border = 0;
 		public static final int CircularImageView_border_color = 2;
 		public static final int CircularImageView_border_width = 1;
 		public static final int CircularImageView_shadow = 3;
-		public static final int[] Theme = { 0x7f010004, 0x7f010048, 0x7f010049, 0x7f01004a, 0x7f01004b, 0x7f01004c, 0x7f01004d };
-		public static final int Theme_circularImageViewStyle = 0;
+		public static final int[] Theme = { 0x7f010043, 0x7f010044, 0x7f010045, 0x7f010046, 0x7f010047, 0x7f010048, 0x7f01006e };
+		public static final int Theme_circularImageViewStyle = 6;
 	}
 }

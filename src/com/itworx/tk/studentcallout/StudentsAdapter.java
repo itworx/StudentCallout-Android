@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 
 import com.itworx.tk.studentcallout.Student;
 
@@ -32,8 +33,9 @@ public class StudentsAdapter extends ArrayAdapter<Student> {
 		}
 //		TextView textView = (TextView) convertView.findViewById(R.id.textviewName);
 //		textView.setText(students.get(position).firstname);
-//		ImageView imageView = (ImageView) convertView.findViewById(R.id.imageviewPhoto);
-//		imageView.setImageResource(R.drawable.example);
+		Student student = students.get(position);
+		ImageView imageView = (ImageView) convertView.findViewById(R.id.student_ImageView);
+		imageView.setImageBitmap(student.imageBitmap);
 //		convertView.setBackgroundColor(0xFF00FF00);
 		return convertView;
 	}

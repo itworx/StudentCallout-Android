@@ -2,12 +2,12 @@ package com.itworx.tk.studentcallout;
 
 import java.util.ArrayList;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,17 +23,17 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	StudentsPresenter studentsPresenter;
 	Context context;
 	View studentCard;
+	Button buttonNext;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		context = this; 
+		context = this;
+		 this.buttonNext = (Button)this.findViewById(R.id.buttonNext);
+		 this.buttonNext.setGravity(Gravity.CENTER);		
 		studentsPresenter = new StudentsPresenter(this,this);
-		studentsPresenter.getStudents();
-		
-		
-		Button buttonNext = (Button)this.findViewById(R.id.buttonNext);
+		 
 		buttonNext.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -42,7 +42,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 			}
     });
 		
-	}
+ }
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,5 +82,23 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		Intent intent = new Intent(this,StudentActivity.class);
 		intent.putExtra("student", student);
 		startActivity(intent);
+	}
+	
+
+	@Override
+	public void setButtonTitle(String buttonTitle) {
+		this.buttonNext.setText(buttonTitle);		
+	}
+
+	@Override
+	public void showHudWithText(String buttonTitle) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void hideHud() {
+		// TODO Auto-generated method stub
+		
 	}
 }

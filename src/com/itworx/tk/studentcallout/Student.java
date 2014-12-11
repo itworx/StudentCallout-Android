@@ -1,5 +1,6 @@
 package com.itworx.tk.studentcallout;
 
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -7,8 +8,7 @@ public class Student implements Parcelable {
 	int id;
 	String firstname;
 	String lastname;
-	String imagePath;
-	Object image;
+	Bitmap imageBitmap;
 	Boolean isPicked;
 	int color;
 	
@@ -23,7 +23,6 @@ public class Student implements Parcelable {
 		// TODO Auto-generated method stub
 		dest.writeString(firstname);
 		dest.writeString(lastname);
-		dest.writeString(imagePath);
 		dest.writeInt(color);
 	}
 	
@@ -43,7 +42,6 @@ public class Student implements Parcelable {
     private Student(Parcel in) {
         firstname = in.readString();
         lastname = in.readString();
-        imagePath = in.readString();
         color = in.readInt();
     }
     
