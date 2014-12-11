@@ -172,6 +172,5 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	@Override
 	public void hideHud() {
 		// TODO Auto-generated method stub
-		
 	}
 }

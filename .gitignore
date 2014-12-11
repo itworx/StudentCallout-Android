@@ -10,3 +10,7 @@
 bin/classes/android/support/v7/appcompat/R.class
 
 *.class
+
+gen/com/itworx/tk/studentcallout/R.java
+
+gen/android/support/v7/appcompat/R.java
