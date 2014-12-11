@@ -30,6 +30,9 @@ import android.provider.ContactsContract.DeletedContacts;
 import android.support.v7.appcompat.*;
 import android.util.Log;
 import android.widget.Toast;
+import android.os.Parcel;
+import android.os.Parcelable;
+import com.itworx.tk.studentcallout.Student;
 
 public class StudentsPresenter {
 	public static final String ALLOW_KEY = "ALLOWREPTITION";
@@ -84,7 +87,7 @@ public class StudentsPresenter {
 			if (this.allowRepetition) {
 				int index = randomGenerator.nextInt(this.students.size());
 				Student selectedStudent = this.students.get(index);
-				studentsActivity.showStudent(selectedStudent);
+			      this.studentsActivity.showStudent(selectedStudent);
 			} else {
 				if (this.studentIndicesToPickFrom.size() == 0) {
 					// Show MSG
@@ -96,18 +99,20 @@ public class StudentsPresenter {
 				this.studentIndicesToPickFrom.remove(index);
 				Student selectedStudent = this.students.get(pickedIndex);
 				studentsActivity.showStudent(selectedStudent);
+				selectedStudent.isPicked = true;
+			      this.studentsActivity.changeSelectionOfStudent(selectedStudent);
 			}
 		}
 	}
 
-	void reset() {
-		// loop in student and set isPicked = No;
-
-		if (!this.allowRepetition) {
-			this.studentIndicesToPickFrom
-					.removeAll(this.studentIndicesToPickFrom);
-			for (int i = 0; i < this.students.size(); i++) {
-				this.studentIndicesToPickFrom.add(i);
+	void reset(){
+		if(!this.allowRepetition){
+			this.studentIndicesToPickFrom.removeAll(this.studentIndicesToPickFrom);
+			for(int i=0 ; i<this.students.size(); i ++){
+			   this.studentIndicesToPickFrom.add(i);
+			   Student student = this.students.get(i);
+			   student.isPicked = false;
+			   this.studentsActivity.changeSelectionOfStudent(student);
 			}
 		}
 	}

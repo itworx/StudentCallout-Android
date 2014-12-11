@@ -10,4 +10,5 @@ public interface IStudentsActivity {
 	void setButtonTitle(String buttonTitle);
 	void showHudWithText(String buttonTitle);
 	void hideHud();
+	void changeSelectionOfStudent(Student student);
 }
