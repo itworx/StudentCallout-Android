@@ -1,8 +1,6 @@
 package com.itworx.tk.studentcallout;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,26 +12,15 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.StringTokenizer;
 
-import org.apache.http.util.ByteArrayBuffer;
-
-import android.R.string;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.provider.ContactsContract.DeletedContacts;
-import android.support.v7.appcompat.*;
 import android.util.Log;
 import android.widget.Toast;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.os.Parcel;
-import android.os.Parcelable;
 import com.itworx.tk.studentcallout.Student;
 
 public class StudentsPresenter {
@@ -48,7 +35,8 @@ public class StudentsPresenter {
 	boolean dbIsEmpty;
 	String buttonTitle;
 
-	public StudentsPresenter(IStudentsActivity studentsActivity, Context context) {
+	public StudentsPresenter(IStudentsActivity studentsActivity,
+			Context context, String fromTk) {
 		this.studentsActivity = studentsActivity;
 		this.databaseHelper = new DataManager(context);
 		this.dbIsEmpty = this.databaseHelper.databaseIsEmpty();
@@ -61,7 +49,10 @@ public class StudentsPresenter {
 		this.preferencesEditor = preferences.edit();
 		// TO DO: load from persistent settings
 		this.allowRepetition = preferences.getBoolean(ALLOW_KEY, false);
-		this.useDataFromExternalStorage();
+		if (null != fromTk && fromTk.equalsIgnoreCase("true"))
+			this.useDataFromExternalStorage();
+		else
+			getStudents();
 	}
 
 	void setAllowRepetition(Boolean allow) {
@@ -89,7 +80,7 @@ public class StudentsPresenter {
 			if (this.allowRepetition) {
 				int index = randomGenerator.nextInt(this.students.size());
 				Student selectedStudent = this.students.get(index);
-			      this.studentsActivity.showStudent(selectedStudent);
+				this.studentsActivity.showStudent(selectedStudent);
 			} else {
 				if (this.studentIndicesToPickFrom.size() == 0) {
 					// Show MSG
@@ -102,19 +93,20 @@ public class StudentsPresenter {
 				Student selectedStudent = this.students.get(pickedIndex);
 				studentsActivity.showStudent(selectedStudent);
 				selectedStudent.isPicked = true;
-			      this.studentsActivity.changeSelectionOfStudent(selectedStudent);
+				this.studentsActivity.changeSelectionOfStudent(selectedStudent);
 			}
 		}
 	}
 
-	void reset(){
-		if(!this.allowRepetition){
-			this.studentIndicesToPickFrom.removeAll(this.studentIndicesToPickFrom);
-			for(int i=0 ; i<this.students.size(); i ++){
-			   this.studentIndicesToPickFrom.add(i);
-			   Student student = this.students.get(i);
-			   student.isPicked = false;
-			   this.studentsActivity.changeSelectionOfStudent(student);
+	void reset() {
+		if (!this.allowRepetition) {
+			this.studentIndicesToPickFrom
+					.removeAll(this.studentIndicesToPickFrom);
+			for (int i = 0; i < this.students.size(); i++) {
+				this.studentIndicesToPickFrom.add(i);
+				Student student = this.students.get(i);
+				student.isPicked = false;
+				this.studentsActivity.changeSelectionOfStudent(student);
 			}
 		}
 	}
@@ -217,10 +209,10 @@ public class StudentsPresenter {
 			} catch (IOException e) {
 
 			}
-		}
-		else{
-			Toast.makeText(activityContext, "Error happen when reading from external storage", Toast.LENGTH_LONG)
-			.show();			
+		} else {
+			Toast.makeText(activityContext,
+					"Error happen when reading from external storage",
+					Toast.LENGTH_LONG).show();
 		}
 	}
 

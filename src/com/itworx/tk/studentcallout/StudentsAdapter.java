@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.itworx.tk.studentcallout.Student;
 
 public class StudentsAdapter extends ArrayAdapter<Student> {
@@ -44,7 +42,7 @@ public class StudentsAdapter extends ArrayAdapter<Student> {
 		}
 
 //		textView.setText(students.get(position).firstname);
-		Student student = students.get(position);
+		// Student student = students.get(position);
 		ImageView imageView = (ImageView) convertView.findViewById(R.id.student_ImageView);
 		imageView.setImageBitmap(student.imageBitmap);
 //		convertView.setBackgroundColor(0xFF00FF00);

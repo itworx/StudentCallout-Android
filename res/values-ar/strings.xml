@@ -3,9 +3,9 @@
 
     <string name="app_name">StudentCallout</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="button_next">Pick Random</string>
+    <string name="action_settings">الضيط</string>
+    <string name="button_next">أختيار عشوائي</string>
     <string name="title_activity_student">StudentActivity</string>
-    <string name="str_loading">Loading...</string>
+    <string name="str_loading">جاري التحميل...</string>
 
 </resources>
