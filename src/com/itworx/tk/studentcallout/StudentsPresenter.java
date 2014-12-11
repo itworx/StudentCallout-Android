@@ -108,7 +108,8 @@ public class StudentsPresenter {
 	      int index = randomGenerator.nextInt(this.students.size());
 	      Student selectedStudent = this.students.get(index);
 	      selectedStudent.isPicked = true;
-	      studentsActivity.showStudent(selectedStudent);	      
+	      this.studentsActivity.showStudent(selectedStudent);
+	      this.studentsActivity.changeSelectionOfStudent(selectedStudent);
 		}
 		else {
 				if(this.studentIndicesToPickFrom.size() == 0){
@@ -120,18 +121,19 @@ public class StudentsPresenter {
 				this.studentIndicesToPickFrom.remove(index);
 				Student selectedStudent = this.students.get(pickedIndex);
 				selectedStudent.isPicked = true;
-			    studentsActivity.showStudent(selectedStudent);				
+			    this.studentsActivity.showStudent(selectedStudent);
+			    this.studentsActivity.changeSelectionOfStudent(selectedStudent);
 		}
 	}
 	
 	void reset(){
-		//loop in student and set isPicked = No;
-		
 		if(!this.allowRepetition){
 			this.studentIndicesToPickFrom.removeAll(this.studentIndicesToPickFrom);
 			for(int i=0 ; i<this.students.size(); i ++){
 			   this.studentIndicesToPickFrom.add(i);
-			   this.students.get(i).isPicked = false;
+			   Student student = this.students.get(i);
+			   student.isPicked = false;
+			   this.studentsActivity.changeSelectionOfStudent(student);
 			}
 		}		
 	}

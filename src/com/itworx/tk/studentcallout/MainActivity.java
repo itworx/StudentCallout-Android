@@ -16,6 +16,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 
@@ -111,11 +112,11 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	@Override
 	public void showStudent(Student student) {
 		// TODO Auto-generated method stub
-		
 		Intent intent = new Intent(this,StudentActivity.class);
 		intent.putExtra("studentModel", student);
 		startActivityForResult(intent, 0);
 	}
+	
 	
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -126,5 +127,31 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	        	studentsPresenter.selectNextStudent();
 	        }
 	    }
+	}
+
+
+	@Override
+	public void changeSelectionOfStudent(Student student) {
+		// TODO Auto-generated method stub
+		GridView gridView = (GridView) findViewById(R.id.gridView);
+		final int numVisibleChildren = gridView.getChildCount();
+		final int firstVisiblePosition = gridView.getFirstVisiblePosition();
+
+		for ( int i = 0; i < numVisibleChildren; i++ ) {
+		    int positionOfView = firstVisiblePosition + i;
+
+		    if (positionOfView == studentsPresenter.students.indexOf(student)) {
+		        View view = gridView.getChildAt(i);
+		        ImageView imageView = (ImageView) view.findViewById(R.id.student_SelectImageView);
+		        
+		        if (student.isPicked) {
+					imageView.setVisibility(View.VISIBLE);
+				}
+				else {
+					imageView.setVisibility(View.INVISIBLE);
+				}
+
+		    }
+		}
 	}
 }

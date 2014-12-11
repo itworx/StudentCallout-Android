@@ -33,7 +33,7 @@ public class StudentsAdapter extends ArrayAdapter<Student> {
 			convertView=view;
 		}
 		
-		//Map the photo
+
 		ImageView selectImageView = (ImageView) convertView.findViewById(R.id.student_SelectImageView);
 		Student student = students.get(position);
 		if (student.isPicked) {
