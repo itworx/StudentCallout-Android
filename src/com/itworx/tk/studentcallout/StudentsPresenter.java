@@ -107,6 +107,7 @@ public class StudentsPresenter {
 		if(this.allowRepetition){			
 	      int index = randomGenerator.nextInt(this.students.size());
 	      Student selectedStudent = this.students.get(index);
+	      selectedStudent.isPicked = true;
 	      studentsActivity.showStudent(selectedStudent);	      
 		}
 		else {
@@ -118,6 +119,7 @@ public class StudentsPresenter {
 				int pickedIndex = this.studentIndicesToPickFrom.get(index);
 				this.studentIndicesToPickFrom.remove(index);
 				Student selectedStudent = this.students.get(pickedIndex);
+				selectedStudent.isPicked = true;
 			    studentsActivity.showStudent(selectedStudent);				
 		}
 	}
@@ -129,6 +131,7 @@ public class StudentsPresenter {
 			this.studentIndicesToPickFrom.removeAll(this.studentIndicesToPickFrom);
 			for(int i=0 ; i<this.students.size(); i ++){
 			   this.studentIndicesToPickFrom.add(i);
+			   this.students.get(i).isPicked = false;
 			}
 		}		
 	}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/com.itworx.tk.studentcallout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -11,6 +11,20 @@
         android:layout_height="90dp"
         android:src="@drawable/example"
         app:border_color="#EEEEEE"
-        app:border_width="4dp"
+        app:border_width="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
         app:shadow="true" />
-</LinearLayout>
+    
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/student_SelectImageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/example"
+        app:border_color="#EEEEEE"
+        app:border_width="4dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        app:shadow="true" />
+    
+</RelativeLayout>

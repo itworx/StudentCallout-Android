@@ -48,6 +48,7 @@ public class Student implements Parcelable {
     }
     
 	public Student() {
+		isPicked = false;
 		// TODO Auto-generated constructor stub
 	}
 }

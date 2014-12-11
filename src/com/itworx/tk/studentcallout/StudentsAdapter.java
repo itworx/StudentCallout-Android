@@ -7,6 +7,8 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.itworx.tk.studentcallout.Student;
 
@@ -30,8 +32,17 @@ public class StudentsAdapter extends ArrayAdapter<Student> {
 					R.layout.student_cell, parent, false);
 			convertView=view;
 		}
+		
 		//Map the photo
-//		TextView textView = (TextView) convertView.findViewById(R.id.textviewName);
+		ImageView selectImageView = (ImageView) convertView.findViewById(R.id.student_SelectImageView);
+		Student student = students.get(position);
+		if (student.isPicked) {
+			selectImageView.setVisibility(View.VISIBLE);
+		}
+		else {
+			selectImageView.setVisibility(View.INVISIBLE);
+		}
+
 //		textView.setText(students.get(position).firstname);
 //		ImageView imageView = (ImageView) convertView.findViewById(R.id.imageviewPhoto);
 //		imageView.setImageResource(R.drawable.example);
