@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.GridView;
@@ -153,14 +154,26 @@ public class MainActivity extends Activity implements IStudentsActivity {
 
 			if (positionOfView == studentsPresenter.students.indexOf(student)) {
 				View view = gridView.getChildAt(i);
-				ImageView imageView = (ImageView) view
+				ImageView selectImageView = (ImageView) view
 						.findViewById(R.id.student_SelectImageView);
+				ImageView imageView = (ImageView) view
+						.findViewById(R.id.student_ImageView);				
 
 				if (student.isPicked) {
-					imageView.setVisibility(View.VISIBLE);
-				} else {
-					imageView.setVisibility(View.INVISIBLE);
+					selectImageView.setVisibility(View.VISIBLE);
+					AlphaAnimation alpha = new AlphaAnimation(0.5F, 0.5F); // change values as you want
+					alpha.setDuration(0); 
+					alpha.setFillAfter(true); 
+					imageView.startAnimation(alpha);			
 				}
+				else {
+					selectImageView.setVisibility(View.INVISIBLE);
+					AlphaAnimation alpha = new AlphaAnimation(1F,1F); // change values as you want
+					alpha.setDuration(0); 
+					alpha.setFillAfter(true); 
+					imageView.startAnimation(alpha);						
+					
+				}				
 
 			}
 		}

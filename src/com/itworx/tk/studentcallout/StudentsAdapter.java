@@ -46,7 +46,7 @@ public class StudentsAdapter extends ArrayAdapter<Student> {
 		}
 		else {
 			selectImageView.setVisibility(View.INVISIBLE);
-			AlphaAnimation alpha = new AlphaAnimation(0.5F,1F); // change values as you want
+			AlphaAnimation alpha = new AlphaAnimation(1F,1F); // change values as you want
 			alpha.setDuration(0); 
 			alpha.setFillAfter(true); 
 			imageView.startAnimation(alpha);						
