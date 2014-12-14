@@ -172,19 +172,22 @@ public class MainActivity extends Activity implements IStudentsActivity {
 
 	@Override
 	public void showHudWithText(String buttonTitle) {
-		progDailog = new ProgressDialog(this);
-		progDailog.setMessage(this.getResources().getString(
-				R.string.str_loading));
-		progDailog.setIndeterminate(false);
-		progDailog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-		progDailog.setCancelable(false);
-		progDailog.show();
+		if(progDailog == null){
+			progDailog = new ProgressDialog(this);
+			progDailog.setMessage(this.getResources().getString(
+					R.string.str_loading));
+			progDailog.setIndeterminate(false);
+			progDailog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			progDailog.setCancelable(false);
+			progDailog.show();
+		}
 	}
 
 	@Override
 	public void hideHud() {
 		if (null != progDailog)
 			progDailog.dismiss();
+			progDailog = null;
 	}
 
 }

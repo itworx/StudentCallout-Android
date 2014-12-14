@@ -72,6 +72,7 @@ public class StudentsPresenter {
 
 	void selectNextStudent() {
 		if (this.dbIsEmpty) {
+			studentsActivity.showHudWithText("Loading...");
 			this.useDemoData();
 			this.buttonTitle = "Pick Random";
 			this.studentsActivity.setButtonTitle(buttonTitle);
@@ -114,6 +115,7 @@ public class StudentsPresenter {
 	class LoadStudents extends AsyncTask<Void, Void, ArrayList<Student>> {
 		@Override
 		protected void onPreExecute() {
+			studentsActivity.showHudWithText("Loading...");
 			super.onPreExecute();
 		}
 
@@ -129,12 +131,12 @@ public class StudentsPresenter {
 			// TODO Auto-generated method stub
 			// super.onPostExecute(result);
 			studentsActivity.showStudents(lst);
+			studentsActivity.hideHud();
 		}
-
 	}
 
 	void useDemoData() {
-
+	
 		AssetManager assetManager = this.activityContext.getAssets();
 		InputStream is = null;
 
