@@ -21,6 +21,7 @@ import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
+
 import com.itworx.tk.studentcallout.Student;
 
 public class StudentsPresenter {
@@ -62,7 +63,7 @@ public class StudentsPresenter {
 		}
 
 		this.preferencesEditor.putBoolean(ALLOW_KEY, this.allowRepetition);
-	
+
 		this.preferencesEditor.commit();
 	}
 
@@ -73,10 +74,9 @@ public class StudentsPresenter {
 
 	void selectNextStudent() {
 		if (this.dbIsEmpty) {
-			studentsActivity.showHudWithText("Loading...");
-			this.useDemoData();
-			this.buttonTitle = "Pick Random";
-			this.studentsActivity.setButtonTitle(buttonTitle);
+			
+		new UseDemoData().execute();
+		
 		} else {
 			Random randomGenerator = new Random();
 			if (this.allowRepetition) {
@@ -95,7 +95,8 @@ public class StudentsPresenter {
 				Student selectedStudent = this.students.get(pickedIndex);
 				studentsActivity.showStudent(selectedStudent);
 				selectedStudent.isPicked = true;
-				this.databaseHelper.updateStudentSelectedState(selectedStudent, true);
+				this.databaseHelper.updateStudentSelectedState(selectedStudent,
+						true);
 				this.studentsActivity.changeSelectionOfStudent(selectedStudent);
 			}
 		}
@@ -109,7 +110,7 @@ public class StudentsPresenter {
 				this.studentIndicesToPickFrom.add(i);
 				Student student = this.students.get(i);
 				student.isPicked = false;
-				this.databaseHelper.updateStudentSelectedState(student, false);				
+				this.databaseHelper.updateStudentSelectedState(student, false);
 				this.studentsActivity.changeSelectionOfStudent(student);
 			}
 		}
@@ -125,13 +126,13 @@ public class StudentsPresenter {
 		@Override
 		protected ArrayList<Student> doInBackground(Void... params) {
 			students = databaseHelper.getAllStudents();
-			for(int i=0 ;i < students.size();i++){				
+			for (int i = 0; i < students.size(); i++) {
 				Student student = students.get(i);
-				if(!student.isPicked){
+				if (!student.isPicked) {
 					studentIndicesToPickFrom.add(i);
 				}
 			}
-			
+
 			return students;
 
 		}
@@ -146,7 +147,7 @@ public class StudentsPresenter {
 	}
 
 	void useDemoData() {
-	
+
 		AssetManager assetManager = this.activityContext.getAssets();
 		InputStream is = null;
 
@@ -240,6 +241,30 @@ public class StudentsPresenter {
 			Log.d("ImageManager", "Error: " + e.toString());
 
 			return null;
+		}
+	}
+
+	class UseDemoData extends AsyncTask<Void, Void, Void> {
+		@Override
+		protected void onPreExecute() {
+			studentsActivity.showHudWithText("Loading...");
+			
+			super.onPreExecute();
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			useDemoData();
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			buttonTitle = "Pick Random";
+		    studentsActivity.setButtonTitle(buttonTitle);
+		    studentsActivity.hideHud();
+			super.onPostExecute(result);
+			
 		}
 	}
 
