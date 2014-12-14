@@ -128,7 +128,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		
 		ApplicationManager applicationManager  =  (ApplicationManager) getApplicationContext();
 		applicationManager.selectedStudent = student ; 
-		
+		this.buttonNext.setVisibility(View.INVISIBLE);
 		// TODO Auto-generated method stub
 		Intent intent = new Intent(this, StudentActivity.class);		
 		startActivityForResult(intent, 0);
@@ -137,7 +137,9 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		if (requestCode == 0) {
-			if (resultCode == 0) { // nothing
+			if (resultCode == 0) {
+				this.buttonNext.setVisibility(View.VISIBLE);
+				// nothing
 			} else if (resultCode == 1) { // pick next
 				studentsPresenter.selectNextStudent();
 			}
