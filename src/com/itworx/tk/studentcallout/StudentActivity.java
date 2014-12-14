@@ -7,6 +7,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
@@ -48,4 +49,17 @@ public class StudentActivity extends Activity {
 			}
 		});		
 	}
+	
+	
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+	
+		finish();
+		
+		return super.onTouchEvent(event);
+	}
+	
+	
+	
+	
 }
