@@ -125,10 +125,12 @@ public class MainActivity extends Activity implements IStudentsActivity {
 
 	@Override
 	public void showStudent(Student student) {
+		
+		ApplicationManager applicationManager  =  (ApplicationManager) getApplicationContext();
+		applicationManager.selectedStudent = student ; 
+		
 		// TODO Auto-generated method stub
-		Intent intent = new Intent(this, StudentActivity.class);
-		intent.putExtra("studentModel", student);
-		intent.putExtra("imageBitmap", student.imageBitmap);
+		Intent intent = new Intent(this, StudentActivity.class);		
 		startActivityForResult(intent, 0);
 	}
 

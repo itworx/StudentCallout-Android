@@ -23,8 +23,7 @@
         android:src="@drawable/checkmark2"
         android:layout_gravity="center"
         app:border_color="#EEEEEE"
-        app:border_width="0dp"
-     
+        app:border_width="0dp" 
         app:shadow="false" />
     
 </FrameLayout>

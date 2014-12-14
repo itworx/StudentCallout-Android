@@ -29,9 +29,9 @@ public class StudentActivity extends Activity {
 		
 		setContentView(R.layout.activity_student);
 		
-		Intent intent = this.getIntent();
-		Student student = intent.getParcelableExtra("studentModel");
-		student.imageBitmap = (Bitmap)intent.getExtras().get("imageBitmap");
+		
+		ApplicationManager applicationManager = (ApplicationManager) getApplicationContext();
+		Student student = applicationManager.selectedStudent ;
 		
 		ImageView imageView = (ImageView)this.findViewById(R.id.imageViewStudent);
 		imageView.setImageBitmap(student.imageBitmap);
