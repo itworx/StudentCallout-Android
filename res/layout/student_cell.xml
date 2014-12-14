@@ -14,7 +14,7 @@
         app:border_width="2dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        app:shadow="true" />
+        app:shadow="false" />
     
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/student_SelectImageView"
@@ -25,7 +25,6 @@
         app:border_width="0dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        
-        app:shadow="true" />
+        app:shadow="false" />
     
 </RelativeLayout>
