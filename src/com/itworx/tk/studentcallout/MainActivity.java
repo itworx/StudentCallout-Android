@@ -127,6 +127,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		// TODO Auto-generated method stub
 		Intent intent = new Intent(this, StudentActivity.class);
 		intent.putExtra("studentModel", student);
+		intent.putExtra("imageBitmap", student.imageBitmap);
 		startActivityForResult(intent, 0);
 	}
 

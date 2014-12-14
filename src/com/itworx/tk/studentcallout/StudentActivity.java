@@ -2,6 +2,8 @@ package com.itworx.tk.studentcallout;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,8 +30,10 @@ public class StudentActivity extends Activity {
 		
 		Intent intent = this.getIntent();
 		Student student = intent.getParcelableExtra("studentModel");
+		student.imageBitmap = (Bitmap)intent.getExtras().get("imageBitmap");
 		
 		ImageView imageView = (ImageView)this.findViewById(R.id.imageViewStudent);
+		imageView.setImageBitmap(student.imageBitmap);
 		TextView textView = (TextView)this.findViewById(R.id.textViewStudent);
 		
 		textView.setText(student.firstname + " " + student.lastname);
