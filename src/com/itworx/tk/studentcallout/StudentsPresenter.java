@@ -62,6 +62,7 @@ public class StudentsPresenter {
 		}
 
 		this.preferencesEditor.putBoolean(ALLOW_KEY, this.allowRepetition);
+	
 		this.preferencesEditor.commit();
 	}
 
@@ -94,6 +95,7 @@ public class StudentsPresenter {
 				Student selectedStudent = this.students.get(pickedIndex);
 				studentsActivity.showStudent(selectedStudent);
 				selectedStudent.isPicked = true;
+				this.databaseHelper.updateStudentSelectedState(selectedStudent, true);
 				this.studentsActivity.changeSelectionOfStudent(selectedStudent);
 			}
 		}
@@ -107,6 +109,7 @@ public class StudentsPresenter {
 				this.studentIndicesToPickFrom.add(i);
 				Student student = this.students.get(i);
 				student.isPicked = false;
+				this.databaseHelper.updateStudentSelectedState(student, false);				
 				this.studentsActivity.changeSelectionOfStudent(student);
 			}
 		}
@@ -122,6 +125,13 @@ public class StudentsPresenter {
 		@Override
 		protected ArrayList<Student> doInBackground(Void... params) {
 			students = databaseHelper.getAllStudents();
+			for(int i=0 ;i < students.size();i++){				
+				Student student = students.get(i);
+				if(!student.isPicked){
+					studentIndicesToPickFrom.add(i);
+				}
+			}
+			
 			return students;
 
 		}

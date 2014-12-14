@@ -49,7 +49,6 @@ public class DataManager extends SQLiteOpenHelper{
 		
 		db.execSQL("DROP TABLE student if exists");
 		onCreate(db);
-		
 	}
 	
 
@@ -64,11 +63,22 @@ public class DataManager extends SQLiteOpenHelper{
 	
 	 	// add image as byte[]
 	 	byte[] imageBlob = DataManager.convertBitmapToByteArray(student.imageBitmap);
-	 	values.put(IMAGE_KEY, imageBlob);	 	
+	 	values.put(IMAGE_KEY, imageBlob);
+	 	values.put(IS_PICKED_KEY, false);
 	
 	 	db.insert(TABLE_NAME,null, values);
 	 	
 	 	db.close();
+	}
+	
+	public void updateStudentSelectedState(Student student,Boolean isPicked) {
+		SQLiteDatabase db = getWritableDatabase();
+	
+	    ContentValues args = new ContentValues();
+	    args.put(IS_PICKED_KEY, isPicked);
+	    db.update(TABLE_NAME, args, "id=" + student.id, null);		
+		
+		db.close();
 	}
 
 	public ArrayList<Student> getAllStudents()
@@ -85,6 +95,7 @@ public class DataManager extends SQLiteOpenHelper{
 			student.lastname= cursor.getString(cursor.getColumnIndex(LAST_NAME_KEY));
 			byte[] imageBlob = cursor.getBlob(cursor.getColumnIndex(IMAGE_KEY));
 			student.imageBitmap = DataManager.getBitmabFromByteArray(imageBlob);
+			student.isPicked = cursor.getInt(cursor.getColumnIndex(IS_PICKED_KEY)) > 0;
 			lstStudents.add(student);
 		}
 		cursor.close();
@@ -127,7 +138,6 @@ public class DataManager extends SQLiteOpenHelper{
 		db.close();
 		return !(count>0);
 	}
-	
 	
 	public void clearDB(){
 		SQLiteDatabase db  = getWritableDatabase();
