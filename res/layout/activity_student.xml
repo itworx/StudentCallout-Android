@@ -36,7 +36,7 @@
     <Button
         android:id="@+id/buttonCardNext"
         android:layout_width="wrap_content"
-        android:text="@string/button_pick_next"
+        android:text="Next Student"
         android:layout_height="wrap_content"
     	android:background="@drawable/image_round"
         android:gravity="center"

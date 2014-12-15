@@ -3,14 +3,9 @@
 
     <string name="app_name">StudentCallout</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">الضبط</string>
-    <string name="button_random">أختيار عشوائي</string>
-    <string name="button_use_demo_data">أستخدام بيانات بدائية</string>
+    <string name="action_settings">الضيط</string>
+    <string name="button_next">أختيار عشوائي</string>
     <string name="title_activity_student">StudentActivity</string>
     <string name="str_loading">جاري التحميل...</string>
-    <string name="button_pick_next">التالي</string>
-    <string name="button_reset">إعادة</string>
-    <string name="button_allow_repetition_on">السماح بالتكرار</string>
-    <string name="button_allow_repetition_off">عدم السماح بالتكرار</string>
 
 </resources>
