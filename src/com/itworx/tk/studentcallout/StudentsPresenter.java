@@ -41,7 +41,7 @@ public class StudentsPresenter {
 		this.studentsActivity = studentsActivity;
 		this.databaseHelper = new DataManager(context);
 		this.dbIsEmpty = this.databaseHelper.databaseIsEmpty();
-		this.buttonTitle = this.dbIsEmpty ? "Use Demo Data" : "Pick Random";
+		this.buttonTitle = (String) (this.dbIsEmpty ? context.getString(R.string.button_use_demo_data) : context.getString(R.string.button_random));
 		this.studentsActivity.setButtonTitle(this.buttonTitle);
 		this.studentIndicesToPickFrom = new ArrayList<Integer>();
 		this.activityContext = context;
