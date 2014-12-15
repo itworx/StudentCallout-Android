@@ -50,16 +50,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				//studentsPresenter.selectNextStudent();
-				
-				
-				Intent sendIntent = new Intent();
-				sendIntent.setAction(Intent.ACTION_SEND);
-				sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
-				sendIntent.setType("text/plain");
-				startActivity(sendIntent);
-				
-				
+				studentsPresenter.selectNextStudent();
 			}
 		});
 
