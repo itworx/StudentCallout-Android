@@ -109,6 +109,14 @@ public class MainActivity extends Activity implements IStudentsActivity {
 									.setEnabled(!studentsPresenter.allowRepetition);
 						}
 					});
+			
+			resetButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					studentsPresenter.reset();
+				}
+	        });
 
 			return true;
 		}
