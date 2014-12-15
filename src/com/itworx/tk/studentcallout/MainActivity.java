@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -207,5 +208,17 @@ public class MainActivity extends Activity implements IStudentsActivity {
 			progDailog.dismiss();
 			progDailog = null;
 	}
+
+	@Override
+	public void showAlert(String titleText, String messageBody) {
+		// TODO Auto-generated method stub
+		new AlertDialog.Builder(this)
+	    .setTitle(titleText)
+	    .setMessage(messageBody)
+	    .setPositiveButton("OK", null)
+	    .show();	
+		this.buttonNext.setVisibility(View.VISIBLE);
+	}
+
 
 }

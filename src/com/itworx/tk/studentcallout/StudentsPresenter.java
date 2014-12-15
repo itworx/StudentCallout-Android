@@ -86,10 +86,11 @@ public class StudentsPresenter {
 			} else {
 				if (this.studentIndicesToPickFrom.size() == 0) {
 					// Show MSG
+					studentsActivity.showAlert("All Student Are Selected", "You have selected all your students.\n The randomization is started from the beginning and selection is reset.");
 					this.reset();
+					return;
 				}
-				int index = randomGenerator
-						.nextInt(this.studentIndicesToPickFrom.size());
+				int index = randomGenerator.nextInt(this.studentIndicesToPickFrom.size());
 				int pickedIndex = this.studentIndicesToPickFrom.get(index);
 				this.studentIndicesToPickFrom.remove(index);
 				Student selectedStudent = this.students.get(pickedIndex);
