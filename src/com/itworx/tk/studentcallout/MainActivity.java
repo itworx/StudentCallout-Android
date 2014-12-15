@@ -12,15 +12,20 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ShareActionProvider;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class MainActivity extends Activity implements IStudentsActivity {
@@ -35,6 +40,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 		context = this;
 		try {
 			mFromTK = getIntent().getStringExtra("fromTK");
@@ -56,10 +62,20 @@ public class MainActivity extends Activity implements IStudentsActivity {
 
 	}
 
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		
+		MenuItem item = menu.findItem(R.id.menu_item_share);
+		    ShareActionProvider myShareActionProvider = (ShareActionProvider) item.getActionProvider();
+		    Intent myIntent = new Intent();
+		    myIntent.setAction(Intent.ACTION_SEND);
+		    myIntent.putExtra(Intent.EXTRA_TEXT, "I just used TeacherKit Student Callout to engage my student.\nDownload it from Google Play Store using this link: https://google.com");
+		    myIntent.setType("text/plain");
+		    myShareActionProvider.setShareIntent(myIntent);
+	    
 		return true;
 	}
 
@@ -77,14 +93,14 @@ public class MainActivity extends Activity implements IStudentsActivity {
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
 			ToggleButton allowRepetitionButton = new ToggleButton(this);
-			allowRepetitionButton.setTextOff("Allow Repetition Off");
-			allowRepetitionButton.setTextOn("Allow Repetition On");
+			allowRepetitionButton.setTextOff(getString(R.string.button_allow_repetition_off));
+			allowRepetitionButton.setTextOn(getString(R.string.button_allow_repetition_on));
 			allowRepetitionButton.setLayoutParams(new LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 			linearLayout.addView(allowRepetitionButton);
 
 			final Button resetButton = new Button(this);
-			resetButton.setText("Reset");
+			resetButton.setText(R.string.button_reset);
 			resetButton.setLayoutParams(new LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 			linearLayout.addView(resetButton);
@@ -94,7 +110,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 			builder = new AlertDialog.Builder(this);
 			builder.setView(linearLayout);
 			alertDialog = builder.create();
-			alertDialog.setTitle("Settings");
+			alertDialog.setTitle(R.string.action_settings);
 			alertDialog.show();
 
 			allowRepetitionButton.setChecked(studentsPresenter.allowRepetition);
