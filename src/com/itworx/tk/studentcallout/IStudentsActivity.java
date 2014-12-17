@@ -10,8 +10,9 @@ public interface IStudentsActivity {
 	void showStudents(ArrayList<Student> students);
 	void showStudent(Student student);
 	void setButtonTitle(String buttonTitle);
-	void showHudWithText(String buttonTitle);
-	void showAlert(String titleText,String messageBody);	
+	void showHudWithText(String text);
+	void showAlert(String titleText,String messageBody);
+	void showAckWtihText(String text);
 	void hideHud();
 	void changeSelectionOfStudent(Student student);
 }

@@ -3,8 +3,6 @@ package com.itworx.tk.studentcallout;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-import android.R.bool;
-import android.R.integer;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

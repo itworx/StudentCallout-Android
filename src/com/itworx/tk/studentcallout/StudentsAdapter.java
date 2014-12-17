@@ -61,4 +61,15 @@ public class StudentsAdapter extends ArrayAdapter<Student> {
 		return convertView;
 	}
 
+	@Override
+	public boolean areAllItemsEnabled()
+	{
+	    return false;
+	}
+
+	@Override
+	public boolean isEnabled(int position)
+	{
+	    return false;
+	}
 }

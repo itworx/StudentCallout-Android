@@ -244,4 +244,12 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	}
 
 
+	@Override
+	public void showAckWtihText(String text) {
+		// TODO Auto-generated method stub
+		Toast.makeText(MainActivity.this, 
+			    text, Toast.LENGTH_LONG).show();
+	}
+
+
 }
