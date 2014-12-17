@@ -104,6 +104,9 @@ public class StudentsPresenter {
 	}
 
 	void reset() {
+		if (this.students == null || this.students.size() == 0) {
+			return;
+		}
 		if (!this.allowRepetition) {
 			this.studentIndicesToPickFrom
 					.removeAll(this.studentIndicesToPickFrom);
