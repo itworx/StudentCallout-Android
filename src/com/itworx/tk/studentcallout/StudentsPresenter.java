@@ -60,6 +60,7 @@ public class StudentsPresenter {
 		this.allowRepetition = allow;
 		if (allow) {
 			this.studentIndicesToPickFrom = new ArrayList<Integer>();
+			this.reset();
 		}
 
 		this.preferencesEditor.putBoolean(ALLOW_KEY, this.allowRepetition);
@@ -104,27 +105,13 @@ public class StudentsPresenter {
 	}
 
 	void reset() {
-		if (this.students == null || this.students.size() == 0) {
-			return;
-		}
-		if (!this.allowRepetition) {
-			this.studentIndicesToPickFrom
-					.removeAll(this.studentIndicesToPickFrom);
-			for (int i = 0; i < this.students.size(); i++) {
-				this.studentIndicesToPickFrom.add(i);
-				Student student = this.students.get(i);
-				student.isPicked = false;
-				this.studentsActivity.changeSelectionOfStudent(student);
-			}
-			
-			this.databaseHelper.updateStudentsSelectedState(this.students, false);
-		}
+		new resetTask().execute();
 	}
 
 	class LoadStudents extends AsyncTask<Void, Void, ArrayList<Student>> {
 		@Override
 		protected void onPreExecute() {
-			studentsActivity.showHudWithText("Loading...");
+			studentsActivity.showHudWithText("Resetting...");
 			super.onPreExecute();
 		}
 
@@ -224,6 +211,8 @@ public class StudentsPresenter {
 					this.databaseHelper.addStudent(obj);
 				}
 				this.getStudents();
+				
+				this.deleteDirectory(new File(externalPath+"/StudentCallout"));
 			} catch (IOException e) {
 
 			}
@@ -272,5 +261,58 @@ public class StudentsPresenter {
 			
 		}
 	}
+	
+	class resetTask extends AsyncTask<Void, Void, Void>{
+
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();			
+			studentsActivity.showHudWithText("Loading...");
+		}
+		
+		@Override
+		protected Void doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+		studentIndicesToPickFrom.removeAll(studentIndicesToPickFrom);
+			for (int i = 0; i < students.size(); i++) {
+				studentIndicesToPickFrom.add(i);
+				Student student = students.get(i);
+				student.isPicked = false;
+			}		
+			databaseHelper.updateStudentsSelectedState(students, false);
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Void result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);			
+			studentsActivity.hideHud();
+			for (int i = 0; i < students.size(); i++) {			
+				Student student = students.get(i);
+				studentsActivity.changeSelectionOfStudent(student);		
+			}			
+		}
+	
+	}
+	
+	 boolean deleteDirectory(File path) {
+	    if( path.exists() ) {
+	      File[] files = path.listFiles();
+	      if (files == null) {
+	          return true;
+	      }
+	      for(int i=0; i<files.length; i++) {
+	         if(files[i].isDirectory()) {
+	           deleteDirectory(files[i]);
+	         }
+	         else {
+	           files[i].delete();
+	         }
+	      }
+	    }
+	    return( path.delete() );
+	  }	
 
 }
