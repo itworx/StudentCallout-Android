@@ -80,6 +80,20 @@ public class DataManager extends SQLiteOpenHelper{
 		
 		db.close();
 	}
+	
+	public void updateStudentsSelectedState(ArrayList<Student> students,Boolean isPicked) {
+		SQLiteDatabase db = getWritableDatabase();
+	
+	    ContentValues args = new ContentValues();
+	    args.put(IS_PICKED_KEY, isPicked);
+	    
+	    
+	    for (int i = 0; i < students.size(); i++) {
+	    	db.update(TABLE_NAME, args, "id=" + students.get(i).id, null);
+		}
+		
+		db.close();
+	}
 
 	public ArrayList<Student> getAllStudents()
 	{

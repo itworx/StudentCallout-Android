@@ -86,7 +86,7 @@ public class StudentsPresenter {
 			} else {
 				if (this.studentIndicesToPickFrom.size() == 0) {
 					// Show MSG
-					studentsActivity.showAlert("All Student Are Selected", "You have selected all your students.\n The randomization is started from the beginning and selection is reset.");
+					studentsActivity.showAlert("All student are selected", "You have selected all your students.\nThe randomization will start from the beginning and selection will be reset.");
 					this.reset();
 					return;
 				}
@@ -111,9 +111,10 @@ public class StudentsPresenter {
 				this.studentIndicesToPickFrom.add(i);
 				Student student = this.students.get(i);
 				student.isPicked = false;
-				this.databaseHelper.updateStudentSelectedState(student, false);
 				this.studentsActivity.changeSelectionOfStudent(student);
 			}
+			
+			this.databaseHelper.updateStudentsSelectedState(this.students, false);
 		}
 	}
 
