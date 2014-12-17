@@ -12,7 +12,7 @@ public interface IStudentsActivity {
 	void setButtonTitle(String buttonTitle);
 	void showHudWithText(String text);
 	void showAlert(String titleText,String messageBody);
-	void showAckWtihText(String text);
+	void showAck(String textResource);
 	void hideHud();
 	void changeSelectionOfStudent(Student student);
 }

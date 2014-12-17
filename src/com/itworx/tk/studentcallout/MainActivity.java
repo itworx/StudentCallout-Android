@@ -20,11 +20,13 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ShareActionProvider;
+import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -91,12 +93,14 @@ public class MainActivity extends Activity implements IStudentsActivity {
 			linearLayout.setLayoutParams(new LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
-			ToggleButton allowRepetitionButton = new ToggleButton(this);
-			allowRepetitionButton.setTextOff(getString(R.string.button_allow_repetition_off));
-			allowRepetitionButton.setTextOn(getString(R.string.button_allow_repetition_on));
-			allowRepetitionButton.setLayoutParams(new LayoutParams(
+			Switch allowRepetitionSwitch = new Switch(this); 
+			allowRepetitionSwitch.setText(getString(R.string.button_allow_repetition));
+			allowRepetitionSwitch.setLayoutParams(new LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-			linearLayout.addView(allowRepetitionButton);
+			
+			
+			
+			linearLayout.addView(allowRepetitionSwitch);
 
 			final Button resetButton = new Button(this);
 			resetButton.setText(R.string.button_reset);
@@ -112,19 +116,17 @@ public class MainActivity extends Activity implements IStudentsActivity {
 			alertDialog.setTitle(R.string.action_settings);
 			alertDialog.show();
 
-			allowRepetitionButton.setChecked(studentsPresenter.allowRepetition);
+			allowRepetitionSwitch.setChecked(studentsPresenter.allowRepetition);
 			resetButton.setEnabled(!studentsPresenter.allowRepetition);
-
-			allowRepetitionButton
-					.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-						public void onCheckedChanged(CompoundButton buttonView,
-								boolean isChecked) {
-							studentsPresenter.setAllowRepetition(isChecked);
-							resetButton
-									.setEnabled(!studentsPresenter.allowRepetition);
-						}
-					});
 			
+			allowRepetitionSwitch.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					studentsPresenter.setAllowRepetition(isChecked);
+					resetButton.setEnabled(!studentsPresenter.allowRepetition);
+				}       
+			});
+
 			resetButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
@@ -199,10 +201,8 @@ public class MainActivity extends Activity implements IStudentsActivity {
 					AlphaAnimation alpha = new AlphaAnimation(1F,1F); // change values as you want
 					alpha.setDuration(0); 
 					alpha.setFillAfter(true); 
-					imageView.startAnimation(alpha);						
-					
-				}				
-
+					imageView.startAnimation(alpha);							
+				}
 			}
 		}
 	}
@@ -245,11 +245,9 @@ public class MainActivity extends Activity implements IStudentsActivity {
 
 
 	@Override
-	public void showAckWtihText(String text) {
+	public void showAck(String text) {
 		// TODO Auto-generated method stub
 		Toast.makeText(MainActivity.this, 
-			    text, Toast.LENGTH_LONG).show();
+				text, Toast.LENGTH_SHORT).show();
 	}
-
-
 }

@@ -39,7 +39,6 @@ public class StudentActivity extends Activity {
 		
 		textView.setText(student.firstname + " " + student.lastname);
 		
-		
 		Button buttonNext = (Button)this.findViewById(R.id.buttonCardNext);
 		buttonNext.setOnClickListener(new OnClickListener() {
 			@Override

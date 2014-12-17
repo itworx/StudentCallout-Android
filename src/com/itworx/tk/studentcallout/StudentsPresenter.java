@@ -274,7 +274,8 @@ public class StudentsPresenter {
 		@Override
 		protected Void doInBackground(Void... params) {
 			// TODO Auto-generated method stub
-		studentIndicesToPickFrom.removeAll(studentIndicesToPickFrom);
+	
+			studentIndicesToPickFrom.removeAll(studentIndicesToPickFrom);
 			for (int i = 0; i < students.size(); i++) {
 				studentIndicesToPickFrom.add(i);
 				Student student = students.get(i);
@@ -292,9 +293,9 @@ public class StudentsPresenter {
 			for (int i = 0; i < students.size(); i++) {			
 				Student student = students.get(i);
 				studentsActivity.changeSelectionOfStudent(student);		
-			}			
+			}
+			studentsActivity.showAck(activityContext.getString(R.string.msg_reset));
 		}
-	
 	}
 	
 	 boolean deleteDirectory(File path) {

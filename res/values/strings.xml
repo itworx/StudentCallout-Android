@@ -10,7 +10,7 @@
     <string name="str_loading">Loading...</string>
     <string name="button_pick_next">Pick Next</string>
     <string name="button_reset">Reset</string>
-    <string name="button_allow_repetition_on">Allow Repetition On</string>
-    <string name="button_allow_repetition_off">Allow Repetition Off</string>
+    <string name="button_allow_repetition">Allow Repetition</string>
+    <string name="msg_reset">Selection is reset</string>
 
 </resources>
