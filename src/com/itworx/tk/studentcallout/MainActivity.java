@@ -238,7 +238,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		new AlertDialog.Builder(this)
 	    .setTitle(titleText)
 	    .setMessage(messageBody)
-	    .setPositiveButton("OK", null)
+	    .setPositiveButton(this.getString(R.string.OK), null)
 	    .show();	
 		this.buttonNext.setVisibility(View.VISIBLE);
 	}

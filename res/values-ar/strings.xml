@@ -5,12 +5,16 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">الضبط</string>
     <string name="button_random">أختيار عشوائي</string>
+	<string name="Another_Pick">أختيار اخر</string>    
     <string name="button_use_demo_data">أستخدام بيانات بدائية</string>
     <string name="title_activity_student">Student Callout</string>
     <string name="str_loading">جاري التحميل...</string>
-    <string name="button_pick_next">التالي</string>
+    <string name="button_pick_next">طالب آخر</string>
     <string name="button_reset">إعادة</string>
     <string name="button_allow_repetition_on">السماح بالتكرار</string>
     <string name="button_allow_repetition_off">عدم السماح بالتكرار</string>
-
+	<string name="All_Students_Selected_Alert_Title">تم إعادة إختيار الطلاب </string>
+	<string name="All_Students_Selected_Alert_Body">لقد تم إختيار جميع الطلاب.</string>
+	<string name="OK">موافق</string>	
+	
 </resources>
