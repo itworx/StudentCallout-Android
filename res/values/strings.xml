@@ -6,7 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="button_random">Pick Random</string>
     <string name="button_use_demo_data">Use Demo Data</string>
-    <string name="title_activity_student">StudentActivity</string>
+    <string name="title_activity_student">Student Callout</string>
     <string name="str_loading">Loading...</string>
     <string name="button_pick_next">Pick Next</string>
     <string name="button_reset">Reset</string>

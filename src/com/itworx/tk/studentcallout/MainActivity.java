@@ -59,7 +59,6 @@ public class MainActivity extends Activity implements IStudentsActivity {
 				studentsPresenter.selectNextStudent();
 			}
 		});
-
 	}
 
 	
@@ -72,7 +71,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		    ShareActionProvider myShareActionProvider = (ShareActionProvider) item.getActionProvider();
 		    Intent myIntent = new Intent();
 		    myIntent.setAction(Intent.ACTION_SEND);
-		    myIntent.putExtra(Intent.EXTRA_TEXT, "I just used TeacherKit Student Callout to engage my student.\nDownload it from Google Play Store using this link: https://google.com");
+		    myIntent.putExtra(Intent.EXTRA_TEXT, "I just used TeacherKit Student Callout to engage my students.\nDownload it from Google Play Store using this link: https://google.com");
 		    myIntent.setType("text/plain");
 		    myShareActionProvider.setShareIntent(myIntent);
 	    

@@ -6,7 +6,7 @@
     <string name="action_settings">الضبط</string>
     <string name="button_random">أختيار عشوائي</string>
     <string name="button_use_demo_data">أستخدام بيانات بدائية</string>
-    <string name="title_activity_student">StudentActivity</string>
+    <string name="title_activity_student">Student Callout</string>
     <string name="str_loading">جاري التحميل...</string>
     <string name="button_pick_next">التالي</string>
     <string name="button_reset">إعادة</string>
