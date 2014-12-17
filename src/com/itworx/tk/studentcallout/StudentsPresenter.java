@@ -35,16 +35,17 @@ public class StudentsPresenter {
 	SharedPreferences.Editor preferencesEditor;
 	boolean dbIsEmpty;
 	String buttonTitle;
+	int pickCounter = 0;
 
 	public StudentsPresenter(IStudentsActivity studentsActivity,
 			Context context, String fromTk) {
 		this.studentsActivity = studentsActivity;
 		this.databaseHelper = new DataManager(context);
 		this.dbIsEmpty = this.databaseHelper.databaseIsEmpty();
-		this.buttonTitle = (String) (this.dbIsEmpty ? context.getString(R.string.button_use_demo_data) : context.getString(R.string.button_random));
-		this.studentsActivity.setButtonTitle(this.buttonTitle);
+
 		this.studentIndicesToPickFrom = new ArrayList<Integer>();
 		this.activityContext = context;
+		this.updateButtonTitle();		
 		SharedPreferences preferences = context.getSharedPreferences(
 				"MyPreferences", Context.MODE_PRIVATE);
 		this.preferencesEditor = preferences.edit();
@@ -74,11 +75,14 @@ public class StudentsPresenter {
 	}
 
 	void selectNextStudent() {
+		
 		if (this.dbIsEmpty) {
 			
-		new UseDemoData().execute();
+			new UseDemoData().execute();
 		
 		} else {
+			this.pickCounter++;
+			this.updateButtonTitle();
 			Random randomGenerator = new Random();
 			if (this.allowRepetition) {
 				int index = randomGenerator.nextInt(this.students.size());
@@ -87,7 +91,7 @@ public class StudentsPresenter {
 			} else {
 				if (this.studentIndicesToPickFrom.size() == 0) {
 					// Show MSG
-					studentsActivity.showAlert("All student are selected", "You have selected all your students.\nThe randomization will start from the beginning and selection will be reset.");
+					studentsActivity.showAlert(this.activityContext.getString(R.string.All_Students_Selected_Alert_Title),this.activityContext.getString(R.string.All_Students_Selected_Alert_Body));
 					this.reset();
 					return;
 				}
@@ -108,6 +112,11 @@ public class StudentsPresenter {
 		new resetTask().execute();
 	}
 
+	void updateButtonTitle(){
+		this.buttonTitle = (String) (this.dbIsEmpty ? this.activityContext.getString(R.string.button_use_demo_data) : this.pickCounter == 0 ? this.activityContext.getString(R.string.button_random) : this.activityContext.getString(R.string.Another_Pick));
+		this.studentsActivity.setButtonTitle(this.buttonTitle);		
+	}
+	
 	class LoadStudents extends AsyncTask<Void, Void, ArrayList<Student>> {
 		@Override
 		protected void onPreExecute() {
@@ -123,6 +132,9 @@ public class StudentsPresenter {
 				if (!student.isPicked) {
 					studentIndicesToPickFrom.add(i);
 				}
+				else{
+					pickCounter ++;
+				}
 			}
 
 			return students;
@@ -135,6 +147,8 @@ public class StudentsPresenter {
 			// super.onPostExecute(result);
 			studentsActivity.showStudents(lst);
 			studentsActivity.hideHud();
+			if(studentIndicesToPickFrom.size() != students.size())
+				updateButtonTitle();
 		}
 	}
 
@@ -294,7 +308,9 @@ public class StudentsPresenter {
 				Student student = students.get(i);
 				studentsActivity.changeSelectionOfStudent(student);		
 			}
-			studentsActivity.showAck(activityContext.getString(R.string.msg_reset));
+			pickCounter = 0;
+			updateButtonTitle();
+            studentsActivity.showAck(activityContext.getString(R.string.msg_reset));
 		}
 	}
 	
