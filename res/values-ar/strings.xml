@@ -19,4 +19,5 @@
 	<string name="Share_Message">لقد قمت باستخدام TeacherKit Student Callout .\nيمكنك تحميل التطبيق من Google Play Store استخدم هذا الرابط: https://google.com</string>
 	<string name="share">مشاركة</string>
 	<string name="Share_Subject">القي نظرة على TeacherKit Student Callout</string>
+	<string name="msg_empty">مرحبا بكم في TeacherKit Student Callout.\n يمكنك استخدام البيانات التجريبية أو الذهاب إلى TeacherKit لأستخراج الطلاب من الفصل إلى TeacherKit Student Callout.</string>
 </resources>

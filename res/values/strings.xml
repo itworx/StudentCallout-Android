@@ -19,4 +19,6 @@
 	<string name="Share_Message">I just used TeacherKit Student Callout to engage my students.\nDownload it from Google Play Store using this link: https://google.com</string>	
 	<string name="share">Share</string>
 	<string name="Share_Subject">Check out TeacherKit Student Callout</string>
+	<string name="msg_empty">Welcome to TeacherKit Student Callout.\nYou can either use demo data or open TeacherKit to export students from your class to TeacherKit Student Callout.
+	    </string>
 </resources>

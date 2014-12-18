@@ -42,6 +42,7 @@ public class StudentsPresenter {
 		this.studentsActivity = studentsActivity;
 		this.databaseHelper = new DataManager(context);
 		this.dbIsEmpty = this.databaseHelper.databaseIsEmpty();
+		this.studentsActivity.showHideHelp(this.dbIsEmpty);
 
 		this.studentIndicesToPickFrom = new ArrayList<Integer>();
 		this.activityContext = context;
@@ -274,6 +275,7 @@ public class StudentsPresenter {
 			buttonTitle = "Pick Random";
 		    studentsActivity.setButtonTitle(buttonTitle);
 		    studentsActivity.hideHud();
+		    studentsActivity.showHideHelp(dbIsEmpty);
 			super.onPostExecute(result);
 			
 		}

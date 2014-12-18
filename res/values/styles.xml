@@ -14,7 +14,7 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
-		<item name="android:homeAsUpIndicator">@drawable/back</item>        
+		        
     </style>
 
   <style name="Theme.Transparent" parent="android:Theme">

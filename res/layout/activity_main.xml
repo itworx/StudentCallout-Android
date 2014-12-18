@@ -21,6 +21,19 @@
     android:verticalSpacing="10dp">     
     </GridView>
     
+    <TextView 
+    android:id="@+id/textEmpty"
+    android:text="@string/msg_empty"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:horizontalSpacing="10dp"   
+    android:verticalSpacing="10dp"
+    android:textSize="18sp"
+    android:textColor="@color/light_green"
+    >     
+    </TextView>
+    
     <!-- <Button android:id="@+id/buttonNext"
     android:layout_width="fill_parent"
     android:gravity="bottom"

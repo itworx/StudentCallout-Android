@@ -15,4 +15,5 @@ public interface IStudentsActivity {
 	void showAck(String textResource);
 	void hideHud();
 	void changeSelectionOfStudent(Student student);
+	void showHideHelp(Boolean show);
 }

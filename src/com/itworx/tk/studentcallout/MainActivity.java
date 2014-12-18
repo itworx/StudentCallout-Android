@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ShareActionProvider;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -232,5 +233,11 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	    MenuItem resetItem = menu.findItem(R.id.action_reset);
 	    repetitionItem.setTitle(studentsPresenter.allowRepetition ? getString(R.string.allow_repetition_on) : getString(R.string.allow_repetition_off));
 	    resetItem.setEnabled(!studentsPresenter.allowRepetition);
+	}
+	@Override
+	public void showHideHelp(Boolean show) {
+		// TODO Auto-generated method stub
+		TextView textView = (TextView)this.findViewById(R.id.textEmpty);
+		textView.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
 	}
 }
