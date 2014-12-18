@@ -52,6 +52,10 @@ public class MainActivity extends Activity implements IStudentsActivity {
 				getActionBar().setDisplayHomeAsUpEnabled(true);
 				getActionBar().setTitle("");				
 			}
+			else{
+				getActionBar().setDisplayShowHomeEnabled(true);
+				getActionBar().setDisplayHomeAsUpEnabled(false);				
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
