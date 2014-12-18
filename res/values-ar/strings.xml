@@ -5,7 +5,7 @@
     <string name="action_settings">الضبط</string>
     <string name="button_random">أختيار عشوائي</string>
 	<string name="Another_Pick">أختيار اخر</string>    
-    <string name="button_use_demo_data">أستخدام بيانات بدائية</string>
+    <string name="button_use_demo_data">أستخدام بيانات تجربية</string>
     <string name="title_activity_student">Student Callout</string>
     <string name="str_loading">جاري التحميل...</string>
     <string name="button_pick_next">طالب آخر</string>
@@ -18,4 +18,5 @@
 	<string name="OK">موافق</string>
 	<string name="Share_Message">لقد قمت باستخدام TeacherKit Student Callout .\nيمكنك تحميل التطبيق من Google Play Store استخدم هذا الرابط: https://google.com</string>
 	<string name="share">مشاركة</string>
+	<string name="Share_Subject">القي نظرة على TeacherKit Student Callout</string>
 </resources>

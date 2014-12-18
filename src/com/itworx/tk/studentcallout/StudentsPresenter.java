@@ -109,6 +109,9 @@ public class StudentsPresenter {
 	}
 
 	void reset() {
+		if (students == null || students.size() == 0)
+			return;
+		
 		new resetTask().execute();
 	}
 

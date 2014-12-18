@@ -84,6 +84,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		    Intent myIntent = new Intent();
 		    myIntent.setAction(Intent.ACTION_SEND);
 		    myIntent.putExtra(Intent.EXTRA_TEXT, this.getString(R.string.Share_Message));
+		    myIntent.putExtra(Intent.EXTRA_SUBJECT, this.getString(R.string.Share_Subject));
 		    myIntent.setType("text/plain");
 		    myShareActionProvider.setShareIntent(myIntent);
 		    
