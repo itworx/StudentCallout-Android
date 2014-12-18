@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">StudentCallout</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">الضبط</string>
@@ -11,11 +10,12 @@
     <string name="str_loading">جاري التحميل...</string>
     <string name="button_pick_next">طالب آخر</string>
     <string name="button_reset">إعادة</string>
-    <string name="button_allow_repetition">السماح بالتكرار</string>
-	<string name="All_Students_Selected_Alert_Title">تم إعادة إختيار الطلاب </string>
+    <string name="allow_repetition_on">مسموح بالتكرار</string>
+    <string name="allow_repetition_off">غير مسموح بالتكرار</string>
+    <string name="msg_reset">تم إعادة الأختيار</string>
+	<string name="All_Students_Selected_Alert_Title">تم إعادة إختيار الطلاب</string>
 	<string name="All_Students_Selected_Alert_Body">لقد تم إختيار جميع الطلاب.</string>
 	<string name="OK">موافق</string>
 	<string name="Share_Message">لقد قمت باستخدام TeacherKit Student Callout .\nيمكنك تحميل التطبيق من Google Play Store استخدم هذا الرابط: https://google.com</string>
 	<string name="share">مشاركة</string>
-	
 </resources>
