@@ -15,6 +15,6 @@
 	<string name="All_Students_Selected_Alert_Title">تم إعادة إختيار الطلاب </string>
 	<string name="All_Students_Selected_Alert_Body">لقد تم إختيار جميع الطلاب.</string>
 	<string name="OK">موافق</string>
-		<string name="Share_Message">لقد قمت باستخدام TeacherKit Student Callout .\nيمكنك تحميل التطبيق من Google Play Store استخدم هذا الرابط: %@: https://google.com</string>
+	<string name="Share_Message">لقد قمت باستخدام TeacherKit Student Callout .\nيمكنك تحميل التطبيق من Google Play Store استخدم هذا الرابط: https://google.com</string>
 	
 </resources>
