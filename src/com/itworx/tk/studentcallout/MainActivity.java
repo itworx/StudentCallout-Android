@@ -46,19 +46,21 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		
 		context = this;
 		try {
-			mFromTK = getIntent().getStringExtra("fromTK");
-			if (null != mFromTK && mFromTK.equalsIgnoreCase("true")){
-				getActionBar().setDisplayShowHomeEnabled(false);
-				getActionBar().setDisplayHomeAsUpEnabled(true);
-				getActionBar().setTitle("");				
-			}
-			else{
-				getActionBar().setDisplayShowHomeEnabled(true);
-				getActionBar().setDisplayHomeAsUpEnabled(false);				
-			}
+			mFromTK = getIntent().getStringExtra("fromTK");			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		
+		if (null != mFromTK && mFromTK.equalsIgnoreCase("true")&&mFromTK!=""){
+			getActionBar().setDisplayShowHomeEnabled(false);
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+			getActionBar().setTitle("");				
+		}
+		else{
+			getActionBar().setDisplayShowHomeEnabled(true);
+			getActionBar().setDisplayHomeAsUpEnabled(false);				
+		}
+		
 
 		this.buttonNext = (Button) this.findViewById(R.id.buttonNext);
 		this.buttonNext.setGravity(Gravity.CENTER);
@@ -104,6 +106,9 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		}
 		else if (id == R.id.action_reset) {
 			studentsPresenter.reset();
+		}
+		else if(id == 16908332){
+			finish();
 		}
 		
 		this.RefreshMenuItems();
