@@ -192,6 +192,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 				if (student.isPicked) {
 					selectImageView.setVisibility(View.VISIBLE);
 					AlphaAnimation alpha = new AlphaAnimation(0.5F, 0.5F); // change values as you want
+					imageView.setBackgroundColor(0);
 					alpha.setDuration(0); 
 					alpha.setFillAfter(true); 
 					imageView.startAnimation(alpha);			
@@ -199,6 +200,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 				else {
 					selectImageView.setVisibility(View.INVISIBLE);
 					AlphaAnimation alpha = new AlphaAnimation(1F,1F); // change values as you want
+					imageView.setBackgroundColor(1);					
 					alpha.setDuration(0); 
 					alpha.setFillAfter(true); 
 					imageView.startAnimation(alpha);							
