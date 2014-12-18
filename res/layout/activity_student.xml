@@ -29,7 +29,7 @@
         android:gravity="center"
         android:lines="2"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <Button
@@ -39,6 +39,7 @@
         android:gravity="center"
         android:text="@string/button_pick_next"
         android:textColor="@color/white"
+        android:textSize="30sp"
         android:background="@drawable/rounded_button"
        	android:paddingLeft="50dp"
        	android:paddingRight="50dp"
