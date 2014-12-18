@@ -16,7 +16,7 @@
 	<string name="All_Students_Selected_Alert_Title">Selection is reset</string>
 	<string name="All_Students_Selected_Alert_Body">You have selected all your students.</string>
 	<string name="OK">OK</string>
-	<string name="Share_Message">I just used TeacherKit Student Callout to engage my students.\nDownload it from Google Play Store using this link: https://google.com</string>	
+	<string name="Share_Message">I just used TeacherKit Student Callout to engage my students.\nDownload it from Google Play Store using this link: https://play.google.com/store/apps/details?id=com.itworx.tk.studentcallout</string>	
 	<string name="share">Share</string>
 	<string name="Share_Subject">Check out TeacherKit Student Callout</string>
 	<string name="msg_empty">Welcome to TeacherKit Student Callout.\nYou can either use demo data or open TeacherKit to export students from your class to TeacherKit Student Callout.
