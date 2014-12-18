@@ -47,10 +47,15 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		context = this;
 		try {
 			mFromTK = getIntent().getStringExtra("fromTK");
-			
+			if (null != mFromTK && mFromTK.equalsIgnoreCase("true")){
+				getActionBar().setDisplayShowHomeEnabled(false);
+				getActionBar().setDisplayHomeAsUpEnabled(true);
+				getActionBar().setTitle("");				
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+
 		this.buttonNext = (Button) this.findViewById(R.id.buttonNext);
 		this.buttonNext.setGravity(Gravity.CENTER);
 		studentsPresenter = new StudentsPresenter(this, this, mFromTK);
@@ -62,9 +67,8 @@ public class MainActivity extends Activity implements IStudentsActivity {
 				studentsPresenter.selectNextStudent();
 			}
 		});
-	}
 
-	
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -205,7 +209,6 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	    .show();	
 		this.buttonNext.setVisibility(View.VISIBLE);
 	}
-
 
 	@Override
 	public void showAck(String text) {
