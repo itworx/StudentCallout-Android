@@ -88,3 +88,7 @@ bin/StudentCallout.apk
 gen/com/mikhaellopez/circularimageview/R.java
 
 project.properties
+
+bin/dexedLibs/android-support-v7-appcompat-e4404602b56ffe48946489a803065378.jar
+
+bin/dexedLibs/circularimageview-9e4e2fb8bf8e87d13a4d56071c899149.jar

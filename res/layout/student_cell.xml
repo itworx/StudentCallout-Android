@@ -16,14 +16,13 @@
     android:layout_gravity="center"
         app:shadow="false" />
     
-    <com.mikhaellopez.circularimageview.CircularImageView
+    <ImageView 
         android:id="@+id/student_SelectImageView"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/checkmark2"
+        android:src="@drawable/checkmark"
+		android:background="@android:color/transparent"
         android:layout_gravity="center"
-        app:border_color="#EEEEEE"
-        app:border_width="0dp" 
-        app:shadow="false" />
+        />
     
 </FrameLayout>
