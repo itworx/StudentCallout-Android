@@ -11,11 +11,12 @@
     <string name="str_loading">Loading...</string>
     <string name="button_pick_next">Next Student</string>
     <string name="button_reset">Reset</string>
-    <string name="button_allow_repetition">Allow Repetition</string>
+    <string name="allow_repetition_on">Allow Repetition On</string>
+    <string name="allow_repetition_off">Allow Repetition Off</string>
     <string name="msg_reset">Selection is reset</string>
 	<string name="All_Students_Selected_Alert_Title">Selection is reset</string>
 	<string name="All_Students_Selected_Alert_Body">You have selected all your students.</string>
 	<string name="OK">OK</string>
-	<string name="">I just used TeacherKit Student Callout to engage my students.\nDownload it from Google Play Store using this link: https://google.com</string>	
-
+	<string name="Share_Message">I just used TeacherKit Student Callout to engage my students.\nDownload it from Google Play Store using this link: https://google.com</string>	
+	<string name="share">Share</string>
 </resources>

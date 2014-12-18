@@ -37,7 +37,8 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	Button buttonNext;
 	ProgressDialog progDailog;
 	String mFromTK = "";
-
+	Menu menu;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,6 +69,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		this.menu = menu;
 		
 		MenuItem item = menu.findItem(R.id.menu_item_share);
 		    ShareActionProvider myShareActionProvider = (ShareActionProvider) item.getActionProvider();
@@ -76,7 +78,8 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		    myIntent.putExtra(Intent.EXTRA_TEXT, "I just used TeacherKit Student Callout to engage my students.\nDownload it from Google Play Store using this link: https://google.com");
 		    myIntent.setType("text/plain");
 		    myShareActionProvider.setShareIntent(myIntent);
-	    
+		    
+		    this.RefreshMenuItems();
 		return true;
 	}
 
@@ -85,58 +88,16 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
+		
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-
-			LinearLayout linearLayout = new LinearLayout(this);
-			linearLayout.setOrientation(LinearLayout.VERTICAL);
-			linearLayout.setLayoutParams(new LayoutParams(
-					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-
-			Switch allowRepetitionSwitch = new Switch(this); 
-			allowRepetitionSwitch.setText(getString(R.string.button_allow_repetition));
-			allowRepetitionSwitch.setLayoutParams(new LayoutParams(
-					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-			
-			
-			
-			linearLayout.addView(allowRepetitionSwitch);
-
-			final Button resetButton = new Button(this);
-			resetButton.setText(R.string.button_reset);
-			resetButton.setLayoutParams(new LayoutParams(
-					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-			linearLayout.addView(resetButton);
-
-			AlertDialog.Builder builder;
-			AlertDialog alertDialog;
-			builder = new AlertDialog.Builder(this);
-			builder.setView(linearLayout);
-			alertDialog = builder.create();
-			alertDialog.setTitle(R.string.action_settings);
-			alertDialog.show();
-
-			allowRepetitionSwitch.setChecked(studentsPresenter.allowRepetition);
-			resetButton.setEnabled(!studentsPresenter.allowRepetition);
-			
-			allowRepetitionSwitch.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-				@Override
-				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-					studentsPresenter.setAllowRepetition(isChecked);
-					resetButton.setEnabled(!studentsPresenter.allowRepetition);
-				}       
-			});
-
-			resetButton.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-					// TODO Auto-generated method stub
-					studentsPresenter.reset();
-				}
-	        });
-
-			return true;
+		if (id == R.id.action_repetition) {
+			studentsPresenter.setAllowRepetition(!studentsPresenter.allowRepetition);
 		}
+		else if (id == R.id.action_reset) {
+			studentsPresenter.reset();
+		}
+		
+		this.RefreshMenuItems();
 
 		return super.onOptionsItemSelected(item);
 	}
@@ -251,5 +212,12 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		// TODO Auto-generated method stub
 		Toast.makeText(MainActivity.this, 
 				text, Toast.LENGTH_SHORT).show();
+	}
+	
+	void RefreshMenuItems() {
+		MenuItem repetitionItem = menu.findItem(R.id.action_repetition);
+	    MenuItem resetItem = menu.findItem(R.id.action_reset);
+	    repetitionItem.setTitle(studentsPresenter.allowRepetition ? getString(R.string.allow_repetition_on) : getString(R.string.allow_repetition_off));
+	    resetItem.setEnabled(!studentsPresenter.allowRepetition);
 	}
 }
