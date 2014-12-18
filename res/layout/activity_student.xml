@@ -36,8 +36,6 @@
         android:id="@+id/buttonCardNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        
         android:gravity="center"
         android:paddingBottom="15dp"
         android:paddingLeft="50dp"
@@ -45,6 +43,12 @@
         android:paddingTop="15dp"
         android:text="@string/button_pick_next"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:background="@drawable/rounded_button"
+       	android:paddingLeft="50dp"
+       	android:paddingRight="50dp"
+       	android:paddingTop="15dp"
+       	android:paddingBottom="15dp"
+        android:layout_gravity="center"
+        />
 
 </LinearLayout>

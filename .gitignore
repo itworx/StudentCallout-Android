@@ -17,8 +17,6 @@ gen/android/support/v7/appcompat/R.java
 
 gen/com/mikhaellopez/circularimageview/R.java
 
-*.xml
-
 *.dex
 
 *.class
