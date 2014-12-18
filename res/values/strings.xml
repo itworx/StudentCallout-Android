@@ -16,6 +16,6 @@
 	<string name="All_Students_Selected_Alert_Title">Selection is reset</string>
 	<string name="All_Students_Selected_Alert_Body">You have selected all your students.</string>
 	<string name="OK">OK</string>
-	<string name="">I just used TeacherKit Student Callout to engage my students.\nDownload it from Google Play Store using this link: https://google.com</string>	
+	<string name="Share_Message">I just used TeacherKit Student Callout to engage my students.\nDownload it from Google Play Store using this link: https://google.com</string>	
 
 </resources>
