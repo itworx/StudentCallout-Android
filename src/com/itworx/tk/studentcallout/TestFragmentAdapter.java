@@ -8,10 +8,7 @@ import com.viewpagerindicator.IconPagerAdapter;
 class TestFragmentAdapter extends FragmentPagerAdapter implements IconPagerAdapter {
     protected static final String[] CONTENT = new String[] { String.valueOf(R.drawable.screenshot1)+"@@"+R.string.string_sc1, String.valueOf(R.drawable.screenshot2)+"@@"+R.string.string_sc2};
     protected static final int[] ICONS = new int[] {
-            R.drawable.perm_group_calendar,
-            R.drawable.perm_group_camera,
-            R.drawable.perm_group_device_alarms,
-            R.drawable.perm_group_location
+       0,0,0,0
     };
 
     private int mCount = CONTENT.length;
