@@ -44,7 +44,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+		getActionBar().setTitle("Student Callout");						
 		context = this;
 		try {
 			mFromTK = getIntent().getStringExtra("fromTK");			
@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		}
 		else{
 			getActionBar().setDisplayShowHomeEnabled(true);
-			getActionBar().setDisplayHomeAsUpEnabled(false);				
+			getActionBar().setDisplayHomeAsUpEnabled(false);	
 		}
 		
 
