@@ -20,5 +20,11 @@
         android:orderInCategory="100"
         android:title="@string/button_reset"
         app:showAsAction="never"/>
+    
+    <item
+        android:id="@+id/action_help"
+        android:orderInCategory="100"
+        android:title="@string/button_help"
+        app:showAsAction="never"/>
 
 </menu>

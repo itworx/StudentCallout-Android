@@ -37,6 +37,10 @@
             android:label="@string/title_activity_student"
             android:theme="@style/Theme.Transparent" >
         </activity>
+        <activity
+            android:name=".SampleCirclesDefault"
+            android:label="@string/title_activity_student">
+        </activity>
     </application>
 
 </manifest>

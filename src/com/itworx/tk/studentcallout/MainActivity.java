@@ -111,6 +111,11 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		else if(id == 16908332){
 			finish();
 		}
+		else if(id == R.id.action_help)
+		{
+			Intent intent = new Intent(getApplicationContext(), SampleCirclesDefault.class);
+			startActivity(intent);
+		}
 		
 		this.RefreshMenuItems();
 
