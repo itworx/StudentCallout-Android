@@ -64,6 +64,10 @@ public class StudentsPresenter {
 			this.studentIndicesToPickFrom = new ArrayList<Integer>();
 			this.reset();
 		}
+		else{
+			this.pickCounter = 0;
+			this.updateButtonTitle();
+		}
 
 		this.preferencesEditor.putBoolean(ALLOW_KEY, this.allowRepetition);
 
