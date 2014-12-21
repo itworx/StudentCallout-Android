@@ -272,8 +272,7 @@ public class StudentsPresenter {
 
 		@Override
 		protected void onPostExecute(Void result) {
-			buttonTitle = "Pick Random";
-		    studentsActivity.setButtonTitle(buttonTitle);
+			updateButtonTitle();
 		    studentsActivity.hideHud();
 		    studentsActivity.showHideHelp(dbIsEmpty);
 			super.onPostExecute(result);
