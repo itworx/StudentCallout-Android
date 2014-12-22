@@ -23,6 +23,6 @@
 	<string name="button_help">مساعدة</string>
     <string name="string_sc1">أضغط علي هذا الزر من TeacherKit لأستخراج تلاميذك إلي Student Callout لأختيارهم بعشوائية</string>
     <string name="string_sc2">أضغط علي هذا الزر من TeacherKit للذهاب إلي Student Callout بدون إستخراج تلاميذك</string>
-	<string name="string_sc3">أضغط علي هذا الزر من Student Callout للرجوع إلي TeacherKit بعد إستخراج تلاميذك</string>
+	<string name="string_sc3">أضغط علي هذا الزر من Student Callout للرجوع إلي TeacherKit </string>
 
 </resources>

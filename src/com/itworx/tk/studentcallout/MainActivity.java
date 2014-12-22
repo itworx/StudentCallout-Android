@@ -55,9 +55,8 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-
-		if (null != mFromTK && mFromTK.equalsIgnoreCase("true")
-				&& mFromTK != "") {
+		
+		if (null != mFromTK && mFromTK!="" && (mFromTK.equalsIgnoreCase("true")||mFromTK.equalsIgnoreCase("false"))){
 			getActionBar().setDisplayShowHomeEnabled(false);
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 			getActionBar().setTitle("TeacherKit");
@@ -256,11 +255,20 @@ public class MainActivity extends Activity implements IStudentsActivity {
 						: getString(R.string.allow_repetition_off));
 		resetItem.setEnabled(!studentsPresenter.allowRepetition);
 	}
-
 	@Override
-	public void showHideHelp(Boolean show) {
+
+	public void showHideHelpMessage(Boolean show) {
 		// TODO Auto-generated method stub
 		TextView textView = (TextView) this.findViewById(R.id.textEmpty);
 		textView.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
 	}
+	
+	@Override
+	public void showHelpView() {
+		// TODO Auto-generated method stub
+		Intent intent = new Intent(getApplicationContext(), SampleCirclesDefault.class);
+		startActivity(intent);		
+	}
+
+
 }
