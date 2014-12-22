@@ -40,8 +40,7 @@ public class SampleCirclesDefault extends BaseSampleActivity {
 		
 		if (id == 16908332)
 		{
-			Intent i = new Intent(getApplicationContext(), MainActivity.class);
-			startActivity(i);
+			finish();
 		}
 		return super.onOptionsItemSelected(item);
 	}

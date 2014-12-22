@@ -12,7 +12,7 @@
     <item
         android:id="@+id/action_repetition"
         android:orderInCategory="100"
-        android:title="@string/allow_repetition_off"
+        android:title="@string/allow_repetition_on"
         app:showAsAction="never"/>
     
     
