@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,8 +56,11 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		
-		if (null != mFromTK && mFromTK!="" && (mFromTK.equalsIgnoreCase("true")||mFromTK.equalsIgnoreCase("false"))){
+
+		if (null != mFromTK
+				&& mFromTK != ""
+				&& (mFromTK.equalsIgnoreCase("true") || mFromTK
+						.equalsIgnoreCase("false"))) {
 			getActionBar().setDisplayShowHomeEnabled(false);
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 			getActionBar().setTitle("TeacherKit");
@@ -85,24 +89,24 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		this.menu = menu;
 
-		MenuItem item = menu.findItem(R.id.menu_item_share);
-		ShareActionProvider myShareActionProvider = (ShareActionProvider) item
-				.getActionProvider();
-		//myShareActionProvider.setShowHistory(false);
-		Intent myIntent = new Intent();
-		myIntent.setAction(Intent.ACTION_SEND);
-		myIntent.putExtra(Intent.EXTRA_TEXT,
-				this.getString(R.string.Share_Message));
-		myIntent.putExtra(Intent.EXTRA_SUBJECT,
-				this.getString(R.string.Share_Subject));
-		myIntent.setType("text/plain");
-		myShareActionProvider.setShareIntent(myIntent);
-		//myShareActionProvider.setOnShareTargetSelectedListener((OnShareTargetSelectedListener) getApplication());		
-		
-		this.RefreshMenuItems();
+		/*
+		 * MenuItem item = menu.findItem(R.id.menu_item_share);
+		 * ShareActionProvider myShareActionProvider = (ShareActionProvider)
+		 * item .getActionProvider(); //
+		 * myShareActionProvider.setShowHistory(false); 
+		 * Intent myIntent = new Intent(); myIntent.setAction(Intent.ACTION_SEND);
+		 * myIntent.putExtra(Intent.EXTRA_TEXT,
+		 * this.getString(R.string.Share_Message));
+		 * myIntent.putExtra(Intent.EXTRA_SUBJECT,
+		 * this.getString(R.string.Share_Subject));
+		 * myIntent.setType("text/plain");
+		 * myShareActionProvider.setShareIntent(myIntent);
+		 * 
+		 * this.RefreshMenuItems();
+		 */
+
 		return true;
 	}
-	
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -125,9 +129,19 @@ public class MainActivity extends Activity implements IStudentsActivity {
 			Intent intent = new Intent(getApplicationContext(),
 					SampleCirclesDefault.class);
 			startActivity(intent);
+		} else if (id == R.id.action_share) {
+			 Intent myIntent = new Intent(); myIntent.setAction(Intent.ACTION_SEND);
+			 myIntent.putExtra(Intent.EXTRA_TEXT,
+			 this.getString(R.string.Share_Message));
+			 myIntent.putExtra(Intent.EXTRA_SUBJECT,
+			 this.getString(R.string.Share_Subject));
+			 myIntent.setType("text/plain");
+			 startActivity(Intent.createChooser(myIntent, "Share via"));
 		}
 
 		this.RefreshMenuItems();
+
+		Log.d("id", id + "");
 
 		return super.onOptionsItemSelected(item);
 	}
@@ -255,20 +269,20 @@ public class MainActivity extends Activity implements IStudentsActivity {
 						: getString(R.string.allow_repetition_off));
 		resetItem.setEnabled(!studentsPresenter.allowRepetition);
 	}
-	@Override
 
+	@Override
 	public void showHideHelpMessage(Boolean show) {
 		// TODO Auto-generated method stub
 		TextView textView = (TextView) this.findViewById(R.id.textEmpty);
 		textView.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
 	}
-	
+
 	@Override
 	public void showHelpView() {
 		// TODO Auto-generated method stub
-		Intent intent = new Intent(getApplicationContext(), SampleCirclesDefault.class);
-		startActivity(intent);		
+		Intent intent = new Intent(getApplicationContext(),
+				SampleCirclesDefault.class);
+		startActivity(intent);
 	}
-
 
 }

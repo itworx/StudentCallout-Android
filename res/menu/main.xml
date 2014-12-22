@@ -3,17 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.itworx.tk.studentcallout.MainActivity" >
 
-    <item
+<!--   <item
         android:id="@+id/menu_item_share"
         android:actionProviderClass="android.widget.ShareActionProvider"
         android:showAsAction="ifRoom"
-        android:title="@string/share"/>
+        android:title="@string/share"/>  -->   
     
     <item
         android:id="@+id/action_repetition"
         android:orderInCategory="100"
-        android:title=" "
+        android:title="@string/allow_repetition_off"
         app:showAsAction="never"/>
+    
+    
+    <item android:id="@+id/action_share"
+          android:icon="@drawable/share_icon_custom"
+          android:title=""
+          android:showAsAction="ifRoom" />
     
     <item
         android:id="@+id/action_reset"
