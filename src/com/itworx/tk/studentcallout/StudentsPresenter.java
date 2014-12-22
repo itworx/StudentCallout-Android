@@ -42,8 +42,7 @@ public class StudentsPresenter {
 		this.studentsActivity = studentsActivity;
 		this.databaseHelper = new DataManager(context);
 		this.dbIsEmpty = this.databaseHelper.databaseIsEmpty();
-		this.studentsActivity.showHideHelp(this.dbIsEmpty);
-
+		this.studentsActivity.showHideHelpMessage(this.dbIsEmpty);		
 		this.studentIndicesToPickFrom = new ArrayList<Integer>();
 		this.activityContext = context;
 		this.updateButtonTitle();		
@@ -52,11 +51,13 @@ public class StudentsPresenter {
 		this.preferencesEditor = preferences.edit();
 		// TO DO: load from persistent settings
 		this.allowRepetition = preferences.getBoolean(ALLOW_KEY, false);
+		this.checkForFirstTimeLaunch();		
 		if (null != fromTk && fromTk.equalsIgnoreCase("true"))
 			this.useDataFromExternalStorage();
 		else
 			getStudents();
 	}
+
 
 	void setAllowRepetition(Boolean allow) {
 		this.allowRepetition = allow;
@@ -278,7 +279,7 @@ public class StudentsPresenter {
 		protected void onPostExecute(Void result) {
 			updateButtonTitle();
 		    studentsActivity.hideHud();
-		    studentsActivity.showHideHelp(dbIsEmpty);
+		    studentsActivity.showHideHelpMessage(dbIsEmpty);
 			super.onPostExecute(result);
 			
 		}
@@ -340,4 +341,13 @@ public class StudentsPresenter {
 	    return( path.delete() );
 	  }	
 
+	 public void checkForFirstTimeLaunch(){
+		 
+		 	SharedPreferences settings = activityContext.getSharedPreferences("MyPreferences", 0);
+		 	if (settings.getBoolean("my_first_time", true)) {
+			    this.studentsActivity.showHelpView();
+			    settings.edit().putBoolean("my_first_time", false).commit(); 
+			}
+	 }
+	 
 }
