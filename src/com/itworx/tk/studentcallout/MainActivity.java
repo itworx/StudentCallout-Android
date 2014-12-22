@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 			ex.printStackTrace();
 		}
 		
-		if (null != mFromTK && mFromTK.equalsIgnoreCase("true")&&mFromTK!=""){
+		if (null != mFromTK && mFromTK!="" && (mFromTK.equalsIgnoreCase("true")||mFromTK.equalsIgnoreCase("false"))){
 			getActionBar().setDisplayShowHomeEnabled(false);
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 			getActionBar().setTitle("");				
