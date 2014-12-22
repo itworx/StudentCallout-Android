@@ -233,6 +233,9 @@ public class StudentsPresenter {
 					obj.imageBitmap = imageBitmap;
 					this.databaseHelper.addStudent(obj);
 				}
+				this.dbIsEmpty = false;
+				this.studentsActivity.showHideHelpMessage(this.dbIsEmpty);
+				this.updateButtonTitle();
 				this.getStudents();
 				
 				this.deleteDirectory(new File(externalPath+"/StudentCallout"));
