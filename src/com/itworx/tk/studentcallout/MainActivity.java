@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -109,7 +110,10 @@ public class MainActivity extends Activity implements IStudentsActivity {
 			studentsPresenter.reset();
 		}
 		else if(id == 16908332){
-			finish();
+			//finish();
+			PackageManager pm = getPackageManager();
+			Intent intent = pm.getLaunchIntentForPackage("com.teacherkit.app");
+			startActivity(intent);
 		}
 		else if(id == R.id.action_help)
 		{
