@@ -15,7 +15,7 @@ public class SampleCirclesDefault extends BaseSampleActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simple_circles);
         
-        getActionBar().setDisplayShowHomeEnabled(false);
+        getActionBar().setDisplayShowHomeEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setTitle("Help");
 
