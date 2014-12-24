@@ -11,6 +11,8 @@
     <string name="str_loading">Loading...</string>
     <string name="button_pick_next">Next Student</string>
     <string name="button_reset">Reset</string>
+	<string name="button_troubleshooting">Troubleshooting</string>
+	<string name="troubleshooting_MSG">ana 3ayz msg</string>
     <string name="allow_repetition_on">Allow Repetition On</string>
     <string name="allow_repetition_off">Allow Repetition Off</string>
     <string name="msg_reset">Selection is reset</string>

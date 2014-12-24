@@ -3,6 +3,49 @@
     package="com.itworx.tk.studentcallout"
     android:versionCode="1"
     android:versionName="1.0" >
+    
+  <compatible-screens>
+
+        <!-- all small size screens -->
+        <screen
+            android:screenDensity="ldpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="mdpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="480"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="640"
+            android:screenSize="small" />
+
+        <!-- all normal size screens -->
+        <screen
+            android:screenDensity="ldpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="mdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="480"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="640"
+            android:screenSize="normal" />
+    </compatible-screens>    
 
     <uses-sdk
         android:minSdkVersion="14"

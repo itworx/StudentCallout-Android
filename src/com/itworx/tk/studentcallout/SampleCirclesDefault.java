@@ -17,7 +17,7 @@ public class SampleCirclesDefault extends BaseSampleActivity {
         
         getActionBar().setDisplayShowHomeEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setTitle("Help");
+		getActionBar().setTitle(R.string.button_help);
 
         mAdapter = new TestFragmentAdapter(getSupportFragmentManager());
 

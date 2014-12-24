@@ -2,15 +2,20 @@ package com.itworx.tk.studentcallout;
 
 import java.util.ArrayList;
 
+import com.itworx.tk.studentcallout.R.string;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -42,36 +47,49 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	View studentCard;
 	Button buttonNext;
 	ProgressDialog progDailog;
-	String mFromTK = "";
+	String mFromTK ;
 	Menu menu;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		getActionBar().setTitle("Student Callout");
+		setContentView(R.layout.activity_main);		
+		this.buttonNext = (Button) this.findViewById(R.id.buttonNext);		
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
 		context = this;
 		try {
-			mFromTK = getIntent().getStringExtra("fromTK");
+			mFromTK = getIntent().getStringExtra("fromTK");						
+			getIntent().removeExtra("fromTK");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		
+		if (studentsPresenter == null
+				|| (mFromTK != null && mFromTK.equalsIgnoreCase("true"))) {
+			
+			if (null != mFromTK
+					&& mFromTK != ""
+					&& (mFromTK.equalsIgnoreCase("true") || mFromTK
+							.equalsIgnoreCase("false"))) {
 
-		if (null != mFromTK
-				&& mFromTK != ""
-				&& (mFromTK.equalsIgnoreCase("true") || mFromTK
-						.equalsIgnoreCase("false"))) {
-			getActionBar().setDisplayShowHomeEnabled(false);
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-			getActionBar().setTitle("TeacherKit");
-		} else {
-			getActionBar().setDisplayShowHomeEnabled(true);
-			getActionBar().setDisplayHomeAsUpEnabled(false);
+				getActionBar().setDisplayShowHomeEnabled(false);
+				getActionBar().setDisplayHomeAsUpEnabled(true);
+				getActionBar().setTitle("TeacherKit");
+			} else {				
+				getActionBar().setDisplayShowHomeEnabled(true);
+				getActionBar().setDisplayHomeAsUpEnabled(false);
+				getActionBar().setTitle("Student Callout");				
+			}			
+
+			studentsPresenter = new StudentsPresenter(this, this, mFromTK);
 		}
 
-		this.buttonNext = (Button) this.findViewById(R.id.buttonNext);
 		this.buttonNext.setGravity(Gravity.CENTER);
-		studentsPresenter = new StudentsPresenter(this, this, mFromTK);
 
 		buttonNext.setOnClickListener(new OnClickListener() {
 			@Override
@@ -80,7 +98,6 @@ public class MainActivity extends Activity implements IStudentsActivity {
 				studentsPresenter.selectNextStudent();
 			}
 		});
-
 	}
 
 	@Override
@@ -93,8 +110,8 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		 * MenuItem item = menu.findItem(R.id.menu_item_share);
 		 * ShareActionProvider myShareActionProvider = (ShareActionProvider)
 		 * item .getActionProvider(); //
-		 * myShareActionProvider.setShowHistory(false); 
-		 * Intent myIntent = new Intent(); myIntent.setAction(Intent.ACTION_SEND);
+		 * myShareActionProvider.setShowHistory(false); Intent myIntent = new
+		 * Intent(); myIntent.setAction(Intent.ACTION_SEND);
 		 * myIntent.putExtra(Intent.EXTRA_TEXT,
 		 * this.getString(R.string.Share_Message));
 		 * myIntent.putExtra(Intent.EXTRA_SUBJECT,
@@ -105,6 +122,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		 * this.RefreshMenuItems();
 		 */
 
+		RefreshMenuItems();		
 		return true;
 	}
 
@@ -130,13 +148,27 @@ public class MainActivity extends Activity implements IStudentsActivity {
 					SampleCirclesDefault.class);
 			startActivity(intent);
 		} else if (id == R.id.action_share) {
-			 Intent myIntent = new Intent(); myIntent.setAction(Intent.ACTION_SEND);
-			 myIntent.putExtra(Intent.EXTRA_TEXT,
-			 this.getString(R.string.Share_Message));
-			 myIntent.putExtra(Intent.EXTRA_SUBJECT,
-			 this.getString(R.string.Share_Subject));
-			 myIntent.setType("text/plain");
-			 startActivity(Intent.createChooser(myIntent, "Share via"));
+			Intent myIntent = new Intent();
+			myIntent.setAction(Intent.ACTION_SEND);
+			myIntent.putExtra(Intent.EXTRA_TEXT,
+					this.getString(R.string.Share_Message));
+			myIntent.putExtra(Intent.EXTRA_SUBJECT,
+					this.getString(R.string.Share_Subject));
+			myIntent.setType("text/plain");
+			startActivity(Intent.createChooser(myIntent, "Share via"));
+		}
+		else if (id == R.id.action_troubleshooting){
+			AlertDialog.Builder builder = new AlertDialog.Builder(
+					this);
+			builder.setMessage(R.string.troubleshooting_MSG);
+			builder.setCancelable(true);
+			builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			});
+			builder.create().show();
 		}
 
 		this.RefreshMenuItems();
@@ -152,6 +184,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		GridView gridView = (GridView) findViewById(R.id.gridView);
 		StudentsAdapter adapter = new StudentsAdapter(this, students);
 		gridView.setAdapter(adapter);
+		
 	}
 
 	@Override

@@ -341,7 +341,7 @@ public class StudentsPresenter {
 	         }
 	      }
 	    }
-	    return( path.delete() );
+	    return( true );
 	  }	
 
 	 public void checkForFirstTimeLaunch(){
