@@ -160,6 +160,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 		else if (id == R.id.action_troubleshooting){
 			AlertDialog.Builder builder = new AlertDialog.Builder(
 					this);
+			builder.setTitle(R.string.button_troubleshooting);
 			builder.setMessage(R.string.troubleshooting_MSG);
 			builder.setCancelable(true);
 			builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {

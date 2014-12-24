@@ -16,13 +16,13 @@
 	<string name="All_Students_Selected_Alert_Title">تم إعادة إختيار الطلاب</string>
 	<string name="All_Students_Selected_Alert_Body">لقد تم إختيار جميع الطلاب.</string>
 	<string name="OK">موافق</string>
-	<string name="Share_Message">لقد قمت باستخدام TeacherKit Student Callout .\nيمكنك تحميل التطبيق من Google Play Store استخدم هذا الرابط: https://play.google.com/store/apps/details?id=com.itworx.tk.studentcallout</string>
+	<string name="Share_Message">لقد قمت باستخدام TeacherKit Student Callout .\n يمكنك تحميل التطبيق من Google Play Store استخدم هذا الرابط: https://play.google.com/store/apps/details?id=com.itworx.tk.studentcallout</string>
 	<string name="share">مشاركة</string>
 	<string name="Share_Subject">القي نظرة على TeacherKit Student Callout</string>
 	<string name="msg_empty">مرحبا بكم في TeacherKit Student Callout.\n يمكنك استخدام البيانات التجريبية أو الذهاب إلى TeacherKit لأستخراج الطلاب من الفصل إلى TeacherKit Student Callout.</string>
 	<string name="button_help">مساعدة</string>
 	<string name="button_troubleshooting">استكشاف الأخطاء وإصلاحها</string>
-	<string name="troubleshooting_MSG">asd</string>
+	<string name="troubleshooting_MSG">إذا حدثت مشكلة في Student Callout أو TeacherKit، قم بإغلاق التطبيقات وحاول مرة أخرى. \n لإغلاقهم اضغط على زر"التطبيقات المستخدمة مؤخرا" ثم قم بإغلاقهم.</string>
     <string name="string_sc1">أضغط علي هذا الزر من TeacherKit لأستخراج تلاميذك إلي Student Callout لأختيارهم بعشوائية</string>
     <string name="string_sc2">أضغط علي هذا الزر من TeacherKit للذهاب إلي Student Callout بدون إستخراج تلاميذك</string>
 	<string name="string_sc3">أضغط علي هذا الزر من Student Callout للرجوع إلي TeacherKit </string>

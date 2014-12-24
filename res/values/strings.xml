@@ -12,7 +12,7 @@
     <string name="button_pick_next">Next Student</string>
     <string name="button_reset">Reset</string>
 	<string name="button_troubleshooting">Troubleshooting</string>
-	<string name="troubleshooting_MSG">ana 3ayz msg</string>
+	<string name="troubleshooting_MSG">If a problem has occurred in Student Callout or TeacherKit, Terminate them and try again.\n To terminate: Press the ”Recent Apps" button then close the two Apps.</string>
     <string name="allow_repetition_on">Allow Repetition On</string>
     <string name="allow_repetition_off">Allow Repetition Off</string>
     <string name="msg_reset">Selection is reset</string>
