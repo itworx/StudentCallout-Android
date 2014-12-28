@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import com.viewpagerindicator.IconPagerAdapter;
 
-class TestFragmentAdapter extends FragmentPagerAdapter implements IconPagerAdapter {
+class HelpFragmentAdapter extends FragmentPagerAdapter implements IconPagerAdapter {
     protected static final String[] CONTENT = new String[] { String.valueOf(R.drawable.screenshot1)+"@@"+R.string.string_sc1, String.valueOf(R.drawable.screenshot2)+"@@"+R.string.string_sc2, String.valueOf(R.drawable.screenshot3)+"@@"+R.string.string_sc3};
     protected static final int[] ICONS = new int[] {
        0,0,0,0
@@ -13,13 +13,13 @@ class TestFragmentAdapter extends FragmentPagerAdapter implements IconPagerAdapt
 
     private int mCount = CONTENT.length;
 
-    public TestFragmentAdapter(FragmentManager fm) {
+    public HelpFragmentAdapter(FragmentManager fm) {
         super(fm);
     }
 
     @Override
     public Fragment getItem(int position) {
-        return TestFragment.newInstance(CONTENT[position % CONTENT.length]);
+        return HelpFragment.newInstance(CONTENT[position % CONTENT.length]);
     }
 
     @Override
@@ -29,7 +29,7 @@ class TestFragmentAdapter extends FragmentPagerAdapter implements IconPagerAdapt
 
     @Override
     public CharSequence getPageTitle(int position) {
-      return TestFragmentAdapter.CONTENT[position % CONTENT.length];
+      return HelpFragmentAdapter.CONTENT[position % CONTENT.length];
     }
 
     @Override

@@ -1,12 +1,6 @@
 package com.itworx.tk.studentcallout;
 
-import org.w3c.dom.Text;
-
-import com.itworx.tk.studentcallout.R.layout;
-
-import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -19,11 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
-public final class TestFragment extends Fragment {
+public final class HelpFragment extends Fragment {
     private static final String KEY_CONTENT = "TestFragment:Content";
 
-    public static TestFragment newInstance(String content) {
-        TestFragment fragment = new TestFragment();
+    public static HelpFragment newInstance(String content) {
+        HelpFragment fragment = new HelpFragment();
 
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < 1; i++) {

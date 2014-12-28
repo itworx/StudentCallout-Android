@@ -144,8 +144,8 @@ public class MainActivity extends Activity implements IStudentsActivity {
 			Intent intent = pm.getLaunchIntentForPackage("com.teacherkit.app");
 			startActivity(intent);
 		} else if (id == R.id.action_help) {
-			Intent intent = new Intent(getApplicationContext(),
-					SampleCirclesDefault.class);
+			Intent intent = new Intent(this,
+					HelpFragmentActivity.class);
 			startActivity(intent);
 		} else if (id == R.id.action_share) {
 			Intent myIntent = new Intent();
@@ -315,7 +315,7 @@ public class MainActivity extends Activity implements IStudentsActivity {
 	public void showHelpView() {
 		// TODO Auto-generated method stub
 		Intent intent = new Intent(getApplicationContext(),
-				SampleCirclesDefault.class);
+				HelpFragmentActivity.class);
 		startActivity(intent);
 	}
 
